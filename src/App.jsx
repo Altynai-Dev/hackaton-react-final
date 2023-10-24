@@ -1,17 +1,18 @@
-import Menu from "./components/Menu/Menu";
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Netflix from "./pages/Netflix";
 
 function App() {
   return (
-    <div className="container">
-      <Menu />
-      <div className="main">
-        <Navbar />
-        <div className="wrapper">
-          video cards
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/signup" element={<Signup />} />
+      <Route exact path="/" element={<Netflix />} />
+    </Routes>
+    </BrowserRouter>
   )
 }
 
