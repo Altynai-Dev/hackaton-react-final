@@ -44,4 +44,3 @@ const Netflix = () => {
 };
 
 export default Netflix;
-const Container = styled.div;
