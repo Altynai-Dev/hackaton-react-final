@@ -3,6 +3,7 @@ import "./App.scss";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Netflix from "./pages/Netflix";
+import Player from "./pages/PlayerPage/Player";
 import { Provider } from "react-redux";
 import store from './store/store';
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
+      <Route exact path="/player" element={<Player/>}/>
       <Route exact path="/" element={<Netflix />} />
     </Routes>
     </BrowserRouter>
