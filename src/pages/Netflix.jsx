@@ -15,16 +15,16 @@ const Netflix = () => {
   };
   return (
     <Container>
-      <Navbar isCrolled={isScrolld} />
+      {/* <Navbar isCrolled={isScrolld} /> */}
       <div className="hero">
-        <img
+        {/* <img
           src={backCraundImage}
           alt="background"
           className="background-image"
-        />
+        /> */}
         <div className="container">
           <div className="logo">
-            <img src={MovieLogo} alt="Movie Logo" />
+            {/* <img src={MovieLogo} alt="Movie Logo" /> */}
           </div>
           <div className="buttons flex">
             <button
