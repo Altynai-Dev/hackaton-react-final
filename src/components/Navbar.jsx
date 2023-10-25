@@ -72,7 +72,7 @@ const Container = styled.div`
     display: flex;
     position: sticky;
     top: 0;
-    height: 6.5rem;
+    height: 4.5rem;
     width: 100%;
     justify-content: space-between;
     position: fixed;
@@ -98,7 +98,7 @@ const Container = styled.div`
           margin-top: 1.3rem;
           li {
             a {
-              color: black;
+              color: white;
               text-decoration: none;
             }
           }
@@ -133,7 +133,7 @@ const Container = styled.div`
             outline: none;
           }
           svg {
-            color: black;
+            color: white;
             font-size: 1.2rem;
           }
         }
@@ -151,7 +151,7 @@ const Container = styled.div`
         }
       }
       .show-search {
-        border: 1px solid black;
+        border: 1px solid white;
         background-color: rgba(0, 0, 0, 0.6);
         input {
           width: 100%;
