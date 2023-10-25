@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginAcoount, registerAccount } from "./accountActions";
-// import { addDataToLocalStorage } from "../../helpers/functions";
+import { loginAccount, registerAccount } from "./accountActions";
+import { addDataToLocalStorage } from "../../helpers/functions.js";
 
 const accountSlice = createSlice({
     name: 'account',
@@ -24,24 +24,25 @@ const accountSlice = createSlice({
         })
         .addCase(registerAccount.fulfilled, (state, action)=>{
             state.loading = false;
+            action.payload.navigate("/login");
         })
         .addCase(registerAccount.rejected, (state)=>{
             state.loading = false;
             state.status = 'error';
         })
-        // .addCase(loginAcoount.pending, (state)=>{
-        //     state.loading = true;
-        // })
-        // .addCase(loginAcoount.fulfilled, (state, action) =>{
-        //     state.loading = false;
-        //     state.user = action.payload.user;
-        //     addDataToLocalStorage(action.payload.data);
-        //     action.payload.navigate('/');
-        // })
-        // .addCase(loginAcoount.rejected, (state)=>{
-        //     state.loading = false;
-        //     state.status = 'error';
-        // })
+        .addCase(loginAccount.pending, (state)=>{
+            state.loading = true;
+        })
+        .addCase(loginAccount.fulfilled, (state, action) =>{
+            state.loading = false;
+            state.user = action.payload.user;
+            addDataToLocalStorage(action.payload.user, action.payload.data);
+            action.payload.navigate('/');
+        })
+        .addCase(loginAccount.rejected, (state)=>{
+            state.loading = false;
+            state.status = 'error';
+        })
     }
 })
 

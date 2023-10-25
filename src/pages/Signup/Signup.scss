@@ -6,7 +6,7 @@
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 1) 100%
       ),
-      url("../../assets/images/login.jpg");
+      url("https://assets.nflxext.com/ffe/siteui/vlv3/a73c4363-1dcd-4719-b3b1-3725418fd91d/2946e8e2-ede5-4743-9864-a9c3f7f60140/KG-en-20231016-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
     background-size: cover;
     position: relative;
   
@@ -25,7 +25,7 @@
         }
   
         .loginButton {
-          background-color: red;
+          background-color: rgb(229, 9, 20);
           border: none;
           color: white;
           border-radius: 5px;
@@ -121,7 +121,7 @@
         .registerButton{
             flex: 4;
             height: 100%;
-            background-color: red;
+            background-color: rgb(229, 9, 20);
             border: none;
             color: white;
             cursor: pointer;

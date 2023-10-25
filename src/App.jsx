@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Netflix from "./pages/Netflix";
 import { Provider } from "react-redux";
