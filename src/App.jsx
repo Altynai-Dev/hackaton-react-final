@@ -3,7 +3,7 @@ import "./App.scss";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Netflix from "./pages/Netflix";
-import Player from "./pages/Player";
+import Player from "./pages/PlayerPage/Player";
 
 function App() {
   return (
