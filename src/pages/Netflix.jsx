@@ -2,7 +2,7 @@ import React from 'react'
 
 const Netflix = () => {
   return (
-    <div>Netflix</div>
+    <h1>сделать update token</h1>
   )
 }
 
