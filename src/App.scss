@@ -1,7 +1,10 @@
-.container{
-    display: flex;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.container {
+  display: flex;
 
-    .main{
-        flex: 7;
-    }
+  .main {
+    flex: 7;
+  }
 }
