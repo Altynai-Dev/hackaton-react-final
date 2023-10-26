@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Video.module.css";
-import video1 from "./video/video1.mp4";
-import video2 from "./video/video2.mp4";
-import video3 from "./video/video3.mp4";
-import video4 from "./video/video4.mp4";
+import video1 from "./videos/video1.mp4";
+import video2 from "./videos/video2.mp4";
+import video3 from "./videos/video3.mp4";
+import video4 from "./videos/video4.mp4";
 
 const Video = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
