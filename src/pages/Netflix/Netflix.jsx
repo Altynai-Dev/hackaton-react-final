@@ -25,7 +25,7 @@ const Netflix = () => {
         <div className="videos">
             <div className="videoItems">
               {videos.map((video)=>(
-                <VideoItem video={video} key={video.id} />
+                <VideoItem video={video} key={video.slug} />
               ))}
             </div>
         </div>
