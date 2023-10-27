@@ -4,7 +4,7 @@ import "./VideoItem.scss";
 
 const VideoItem = ({video}) => {
     const navigate = useNavigate();
-console.log(video)
+
   return (
     <div className='videoItem'>
     {/* <h2>{video.name}</h2> */}
