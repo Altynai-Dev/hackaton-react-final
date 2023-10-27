@@ -1,30 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom/dist";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import Navbar from "../../components/navbar/Navbar";
 import Video from "../../components/video/Video";
+import { useDispatch, useSelector } from "react-redux";
+import { getVideos } from "../../store/videos/videosActions";
 
 const Netflix = () => {
   const navigate = useNavigate();
 
+  const {videos} = useSelector((state)=>state.videos);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getVideos());
+  },[]);
+
+  console.log(videos)
   return (
     <Container>
       <Navbar />
       <div className="hero">
         <Video />
-          {/* <div className="buttons">
-            <button
-            
-              onClick={() => navigate("/player")}
-            >
-              <FaPlay /> Play
-            </button>
-            <button>
-              <AiOutlineInfoCircle /> More Info
-            </button>
-          </div> */}
+          {}
       </div>
     </Container>
   );
