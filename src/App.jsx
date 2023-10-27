@@ -11,6 +11,8 @@ import store from "./store/store";
 import Details from "./pages/Details/Details";
 import Seasons from "./pages/Seasons/Seasons";
 import Series from "./pages/Series/Series";
+import AnimeGame from "./components/games/AnimeGame/Animegame";
+
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
       <Route path="/series/:slug" element={<Details />} />
       <Route path="/series/:slug/series" element={<Seasons />} />
       <Route path="/series/watch/:slug" element={<Series />} />
-
+      <Route path="/animegame" element={<AnimeGame />} />
 
     </Routes>
     </BrowserRouter>
