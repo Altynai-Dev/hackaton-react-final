@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Video.module.css";
+import styles from "./Video.module.css";
 import video1 from "./videos/video1.mp4";
 import video2 from "./videos/video2.mp4";
 import video3 from "./videos/video3.mp4";
@@ -41,7 +41,7 @@ const Video = () => {
   }, [currentSlide]);
 
   return (
-    <div className="video-container">
+    <div className={styles.videoContainer}>
       <video
         ref={videoRef}
         autoPlay
