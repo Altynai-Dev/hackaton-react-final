@@ -1,17 +1,14 @@
-.netflix{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 .videoContainer{
     position: relative;
     width: 100vw;
     height: 100vh;
+    margin-bottom: 15rem;
 }
 
 .videos{
     position: absolute;
-    
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

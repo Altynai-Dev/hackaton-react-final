@@ -16,7 +16,6 @@ const Netflix = () => {
   useEffect(()=>{
     dispatch(getVideos());
   },[]);
-console.log(videos)
   return (
     <div className="netfix">
       <Navbar />
