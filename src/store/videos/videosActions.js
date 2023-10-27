@@ -13,3 +13,15 @@ export const getVideos = createAsyncThunk(
         
     }
 )
+
+export const getVideoDetail = createAsyncThunk(
+    'videos/getSeries',
+    async({slug})=>{
+        try{
+            const {data} = await axios.get(`http://34.89.235.149/api/v1/title/${slug}`);
+            return data;
+        }catch(err){
+            console.log(err);
+        }
+    }
+)

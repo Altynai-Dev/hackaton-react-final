@@ -8,6 +8,7 @@ import Cards from "./components/games/Cards";
 import Player from "./pages/PlayerPage/Player";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import Series from "./pages/Series/Series";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/player" element={<Player/>}/>
       <Route exact path="/" element={<Netflix />} />
       <Route exact path="/games" element={<Games />} />
+      <Route path="/series/:slug" element={<Series />} />
     </Routes>
     </BrowserRouter>
     </Provider>

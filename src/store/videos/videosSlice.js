@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getVideos } from "./videosActions";
+import { getVideoDetail, getVideos } from "./videosActions";
 
 const videosSlice = createSlice({
     name: 'videos',
     initialState: {
         loading: false,
         videos: [],
+        videoDetail: [],
         oneVideo: null
     },
     reducers: {
@@ -27,7 +28,16 @@ const videosSlice = createSlice({
         .addCase(getVideos.rejected, (state) => {
             state.loading = false;
         })
-        
+        .addCase(getVideoDetail.pending, (state)=>{
+            state.loading = true;
+        })
+        .addCase(getVideoDetail.fulfilled, (state, action)=>{
+            state.loading = false;
+            state.videoDetail = action.payload.data;
+        })
+        .addCase(getVideoDetail.rejected, (state)=>{
+            state.loading = false;
+        })
     }
 });
 
