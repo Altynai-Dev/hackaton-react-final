@@ -30,7 +30,6 @@ export const loginAccount = createAsyncThunk(
         accountData.append('email', user.email);
         accountData.append('password', user.password);
         const {data} = await axios.post('http://34.89.235.149/api/v1/account/login/', accountData);
-        console.log(data)
         return { data, navigate, user: user.email };
     }
 )

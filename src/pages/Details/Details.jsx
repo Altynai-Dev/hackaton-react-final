@@ -16,19 +16,24 @@ const Details = () => {
     useEffect(()=>{
        dispatch(getVideoDetail({slug})) 
     },[])
+
+    const handleDelete = (slug) =>{
+      dispatch(deleteMovie(slug));
+      navigate("/netflix");
+    }
   return (
     <>
         {videoDetail && (
             <div className='videoDetail' style={{color: "white"}}>
-                <h3>{videoDetail.name}</h3>
+                <h2>{videoDetail.name}</h2>
                 <img onClick={()=>navigate(`/series/${videoDetail.slug}/series`)} src={videoDetail.poster} />
                 <p>Age rating: {videoDetail.age_rating}</p>
                 <p>Description: {videoDetail.description}</p>
+                <p>Views: {videoDetail.views}</p>
+                <p>Genres: {videoDetail.genres}</p>
+                <p>Year: {videoDetail.years}</p>
                 {checkAdmin() && <button onClick={()=>navigate("/createVideo")}>Add video</button>}
-                <button onClick={()=>{
-                  dispatch(deleteMovie({slug}));
-                  navigate("/netflix");
-                }}>Delete Movie</button>
+                {checkAdmin() && <button onClick={handleDelete}>Delete Movie</button>}
                 {/* <p>Genre: {videoDetail.genres.map((genre)=><span>{genre}</span>)}</p> */}
             </div>
         )}

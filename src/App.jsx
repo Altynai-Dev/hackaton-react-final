@@ -13,6 +13,7 @@ import Series from "./pages/Series/Series";
 import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
 import AnimeGame from "./components/games/AnimeGame/Animegame";
+import Edit from "./pages/Edit/Edit";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <Route path="/createVideo" element={<CreateVideo />} />
       <Route path="/createMovie" element={<CreateMovie />} />
       <Route path="/animegame" element={<AnimeGame />} />
+      <Route path="/series/edit-series/:slug" element={<Edit />} />
     </Routes>
     </BrowserRouter>
     </Provider>
