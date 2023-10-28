@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const addDataToLocalStorage = (user, tokens) => {
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify({email: user}));
     localStorage.setItem('tokens', JSON.stringify(tokens));
 };
 
@@ -16,6 +16,13 @@ export const checkUserLogin = () => {
     return true;
 };
 
+export const checkAdmin = () =>{
+    const user = localStorage.getItem('user');
+    const userObj = JSON.parse(user);
+    if(userObj.email === "slime@admin.su") return true;
+    return false;
+}
+
 export const updateToken = () => {
     let updateFunc = setInterval(async () => {
         const tokens = JSON.parse(localStorage.getItem('tokens'));
@@ -25,3 +32,8 @@ export const updateToken = () => {
         localStorage.setItem('tokens', JSON.stringify({ refresh: tokens.refresh, access: data.access }));
     }, 1000 * 60 * 9);
 };
+
+export const getAccessToken = () =>{
+    let tokens = JSON.parse(localStorage.getItem('tokens'));
+    return tokens.access;
+}

@@ -1,3 +1,19 @@
 .videoItem{
-    width: 30%;
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2{
+        font-size: 1rem;
+        width: 70%; 
+        text-overflow: ellipsis; 
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    img{
+        width: 70%;
+        height: 60%;
+        object-fit: cover;
+    }
 }

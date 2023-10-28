@@ -1,11 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getAccessToken } from "../../helpers/functions";
 
 export const getVideos = createAsyncThunk(
     'videos/getVideos',
-    async() => {
+    async(_, {getState}) => {
         try{
-            const {data} = await axios.get("http://34.89.235.149/api/v1/title/");
+            const {search} = getState().videos;
+            const categoryAndSearchParams = `search=${search}`;
+            const {data} = await axios.get(`http://34.89.235.149/api/v1/title/?${categoryAndSearchParams}`);
             return {data};
         }catch(err){
             console.log(err)
@@ -43,10 +46,94 @@ export const getVideoSeries = createAsyncThunk(
     async({slug})=>{
         try{
             const {data} = await axios.get(`http://34.89.235.149/api/v1/title/series/${slug}`);
-            console.log(data)
             return {data};
         }catch(err){
             console.log(err);
         }
+    }
+)
+
+export const createVideo = createAsyncThunk(
+    'videos/createVideo',
+    async (video, { dispatch }) => {
+        const formData = new FormData()
+        formData.append('number', video.number)
+        formData.append('name', video.name)
+        formData.append('season', video.season)
+        formData.append('title', video.title)
+        formData.append('video', video.video)
+        const res = await axios.post('http://34.89.235.149/api/v1/title/series/', formData, 
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": "multipart/form-data"}}
+        )
+        .catch(err => console.log(err));
+        dispatch(getVideos());
+    }
+);
+
+export const editSeries = createAsyncThunk(
+    'videos/editSeries',
+    async(video, {dispatch}) => {
+        console.log(video)
+        const formData = new FormData();
+        formData.append('number', video.number)
+        formData.append('name', video.name)
+        formData.append('season', video.season)
+        formData.append('title', video.title)
+        formData.append('video', video.video)
+        const res = await axios.patch(`http://34.89.235.149/api/v1/title/series/${video.slug}`, formData,
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": 'multipart/form-data'}})
+        .catch(err => console.log(err));
+        console.log(res.data)
+        dispatch(getVideos());
+    }
+);
+
+export const createMovie = createAsyncThunk(
+    'videos/createMovie',
+    async(movie, {dispatch})=>{
+        const formData = new FormData();
+        formData.append('name', movie.name);
+        formData.append('age_rating', movie.age_rating);
+        formData.append('description', movie.description);
+        formData.append('poster', movie.poster);
+        const res = await axios.post('http://34.89.235.149/api/v1/title/', movie, 
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": 'multipart/form-data'}})
+        .catch(err => console.log(err));
+        dispatch(getVideos());
+    }
+);
+
+export const deleteMovie = createAsyncThunk(
+    'videos/deleteMovie',
+    async ({slug}, {dispatch}) =>{
+        await axios.delete(`http://34.89.235.149/api/v1/title/${slug}`, 
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`}}
+        )
+        .catch(err => console.log(err));
+        dispatch(getVideos());
+    }
+);
+
+export const deleteSeries = createAsyncThunk(
+    'videos/deleteSeries',
+    async(slug, {dispatch})=>{
+        await axios.delete(`http://34.89.235.149/api/v1/title/series/${slug}`,
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`}}
+        ).catch(err => console.log(err));
+        dispatch(getVideos());
+    }
+);
+
+
+export const getGenres = createAsyncThunk(
+    'videos/getGenres',
+    async() => {
+    const {data} = await axios.get('http://34.89.235.149/api/v1/title/genre/');
+    const genres = data.results;
+    const genresList = [];
+    for(let i=0; i<genres.length; i++){
+        genresList.push(genres[i].slug)
+    }
+    return genresList;
     }
 )

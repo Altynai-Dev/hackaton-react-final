@@ -10,7 +10,6 @@ const Seasons = () => {
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(slug)
 
     useEffect(()=>{
         dispatch(getVideoSeasons({slug}))
@@ -21,7 +20,7 @@ const Seasons = () => {
         <div key={key}>
           <h1>{key}</h1>
         {value.map((series, index) => (
-          <span onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number}</span>
+          <span key={index} onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number}</span>
         ))}
       </div>
       ))}
