@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { makeRequest } from "../../helpers/consts";
-
 
 export const registerAccount = createAsyncThunk(
     'account/registerAccount',
