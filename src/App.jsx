@@ -13,26 +13,28 @@ import Series from "./pages/Series/Series";
 import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
 import AnimeGame from "./components/games/AnimeGame/Animegame";
+import Qiuz from "./components/quiz/Quiz"
 
 
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-    <Routes>
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="/signup" element={<Signup />} />
-      <Route exact path="/player" element={<Player/>}/>
-      <Route exact path="/" element={<Netflix />} />
-      <Route exact path="/games" element={<Games />} />
-      <Route path="/series/:slug" element={<Details />} />
-      <Route path="/series/:slug/series" element={<Seasons />} />
-      <Route path="/series/watch/:slug" element={<Series />} />
-      <Route path="/createVideo" element={<CreateVideo />} />
-      <Route path="/createMovie" element={<CreateMovie />} />
-      <Route path="/animegame" element={<AnimeGame />} />
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/player" element={<Player />} />
+          <Route exact path="/" element={<Netflix />} />
+          <Route exact path="/games" element={<Games />} />
+          <Route path="/series/:slug" element={<Details />} />
+          <Route path="/series/:slug/series" element={<Seasons />} />
+          <Route path="/series/watch/:slug" element={<Series />} />
+          <Route path="/createVideo" element={<CreateVideo />} />
+          <Route path="/createMovie" element={<CreateMovie />} />
+          <Route path="/animegame" element={<AnimeGame />} />
+          <Route path="/quiz" element={<Qiuz />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }
