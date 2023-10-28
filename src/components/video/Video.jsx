@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./Video.module.css";
-import video1 from "./videos/video1.mp4";
-import video2 from "./videos/video2.mp4";
-import video3 from "./videos/video3.mp4";
-import video4 from "./videos/video4.mp4";
+import React, { useState, useEffect } from "react";
+import ReactPlayer from "react-player";
+
+import video1 from "./video/video1.mp4";
+import video2 from "./video/video2.mp4";
+import video3 from "./video/video3.mp4";
+import video4 from "./video/video4.mp4";
 
 const Video = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const totalSlides = 4;
-  const videoRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,24 +35,32 @@ const Video = () => {
     }
   };
 
-  useEffect(() => {
-    // При изменении currentSlide обновляем видео
-    videoRef.current.load();
-  }, [currentSlide]);
+  const videoContainerStyle = {
+    position: "relative",
+    paddingTop: "56.25%", // 16:9 aspect ratio
+    width: "100%", // 100% ширины окна браузера
+  };
+
+  const videoStyle = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  };
 
   return (
-    <div className={styles.videoContainer}>
-      <video
-        ref={videoRef}
-        autoPlay
-        controls={false}
-        loop
-        muted
+    <div className="video-container" style={videoContainerStyle}>
+      <ReactPlayer
+        url={getVideoUrl(currentSlide)}
+        playing={true}
+        muted={true}
+        loop={true}
+        style={videoStyle}
         width="100%"
-        height="auto"
-      >
-        <source src={getVideoUrl(currentSlide)} type="video/mp4" />
-      </video>
+        height="100%"
+        preload="auto" // Добавьте этот атрибут
+      />
     </div>
   );
 };
