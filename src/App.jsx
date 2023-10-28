@@ -12,6 +12,8 @@ import Seasons from "./pages/Seasons/Seasons";
 import Series from "./pages/Series/Series";
 import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
+import AnimeGame from "./components/games/AnimeGame/Animegame";
+
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
       <Route path="/series/watch/:slug" element={<Series />} />
       <Route path="/createVideo" element={<CreateVideo />} />
       <Route path="/createMovie" element={<CreateMovie />} />
-
+      <Route path="/animegame" element={<AnimeGame />} />
     </Routes>
     </BrowserRouter>
     </Provider>
