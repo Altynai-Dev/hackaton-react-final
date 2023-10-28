@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVideos } from "../../store/videos/videosActions";
 import VideoItem from "../../components/videoItem/VideoItem";
 import "./Netflix.scss";
+import { checkAdmin } from "../../helpers/functions";
 
 const Netflix = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Netflix = () => {
               {videos.map((video)=>(
                 <VideoItem video={video} key={video.slug} />
               ))}
+              {checkAdmin() && <button onClick={()=>navigate("/createMovie")}>Add Movie</button>}
             </div>
         </div>
     </div>

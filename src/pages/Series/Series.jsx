@@ -10,7 +10,6 @@ const Series = () => {
 
     useEffect(()=>{
         dispatch(getVideoSeries({slug}))
-        console.log(oneVideo)
     }, [])
   return (
     <>
