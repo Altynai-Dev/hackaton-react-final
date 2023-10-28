@@ -19,9 +19,9 @@ const Details = () => {
   return (
     <>
         {videoDetail && (
-            <div onClick={()=>navigate(`/series/${videoDetail.slug}/series`)} className='videoDetail' style={{color: "white"}}>
+            <div className='videoDetail' style={{color: "white"}}>
                 <h3>{videoDetail.name}</h3>
-                <img src={videoDetail.poster} />
+                <img onClick={()=>navigate(`/series/${videoDetail.slug}/series`)} src={videoDetail.poster} />
                 <p>Age rating: {videoDetail.age_rating}</p>
                 <p>Description: {videoDetail.description}</p>
                 {checkAdmin() && <button onClick={()=>navigate("/createVideo")}>Add video</button>}
