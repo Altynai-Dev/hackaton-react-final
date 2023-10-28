@@ -23,8 +23,8 @@ const CreateVideo = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log(video)
-    dispatch(createVideo(video))
+    dispatch(createVideo(video));
+    navigate('/');
   }
 
   return (

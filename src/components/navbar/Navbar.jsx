@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {setSearchVal} from "../../store/videos/videosSlice";
+import { getVideos } from "../../store/videos/videosActions";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import './Navbar.scss';
@@ -11,9 +14,19 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
+  // serach
+  const { search } = useSelector(state => state.videos);
+  const [searchValue, setSearchValue] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(!search) {
+      setSearchValue('');
+    };
+  }, [search]);
+
   const links = [
     { name: "Home", link: "/" },
-    { name: "TV Shows", link: "/tv" },
     { name: "Movies", link: "/movies" },
     { name: "My List", link: "/mylist" },
   ];
@@ -46,11 +59,16 @@ export default function Navbar() {
                 }
               }}
             >
-              <FaSearch />
+              <FaSearch onClick={() => {
+                dispatch(setSearchVal({ search: searchValue }));
+                dispatch(getVideos())
+              }} />
             </button>
             <input
               type="text"
               placeholder="Search"
+              onChange={(e) => setSearchValue(e.target.value)}
+              value={searchValue}
               onMouseEnter={() => setInputHover(true)}
               onMouseLeave={() => setInputHover(false)}
               onBlur={() => {
