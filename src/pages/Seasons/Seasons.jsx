@@ -10,7 +10,6 @@ const Seasons = () => {
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(slug)
 
     useEffect(()=>{
         dispatch(getVideoSeasons({slug}))

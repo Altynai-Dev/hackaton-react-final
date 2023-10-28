@@ -8,7 +8,7 @@ const videosSlice = createSlice({
         videos: [],
         videoDetail: [],
         seasons : [],
-        oneVideo: null
+        oneVideo: null,
     },
     reducers: {
         clearOneVideoState: (state) =>{
@@ -59,6 +59,7 @@ const videosSlice = createSlice({
         .addCase(getVideoSeries.rejected, (state)=>{
             state.loading = false;
         })
+
     }
 });
 

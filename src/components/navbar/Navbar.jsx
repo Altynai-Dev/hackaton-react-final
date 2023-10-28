@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import './Navbar.scss';
 import { FaPowerOff, FaSearch } from "react-icons/fa";
-import {checkUserLogin, logout} from "../../helpers/functions";
+import {checkAdmin, checkUserLogin, logout} from "../../helpers/functions";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -36,6 +36,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="right">
+          
           <div className={`search ${showSearch ? "show-search" : ""}`}>
             <button
               onFocus={() => setShowSearch(true)}

@@ -4,13 +4,14 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Netflix from "./pages/Netflix/Netflix";
 import Games from "./components/games/Games";
-import Cards from "./components/games/Cards";
 import Player from "./pages/PlayerPage/Player";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Details from "./pages/Details/Details";
 import Seasons from "./pages/Seasons/Seasons";
 import Series from "./pages/Series/Series";
+import CreateVideo from "./pages/Create/CreateVideo";
+import CreateMovie from "./pages/CreateMovie/CreateMovie";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       <Route path="/series/:slug" element={<Details />} />
       <Route path="/series/:slug/series" element={<Seasons />} />
       <Route path="/series/watch/:slug" element={<Series />} />
-
+      <Route path="/createVideo" element={<CreateVideo />} />
+      <Route path="/createMovie" element={<CreateMovie />} />
 
     </Routes>
     </BrowserRouter>

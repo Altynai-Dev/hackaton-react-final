@@ -7,7 +7,7 @@ const VideoItem = ({video}) => {
 
   return (
     <div className='videoItem'>
-    {/* <h2>{video.name}</h2> */}
+    <h2>{video.name}</h2>
     <img onClick={()=>navigate(`/series/${video.slug}`)} src={video.poster} />
     <p>{video.seasons}</p>
     </div>
