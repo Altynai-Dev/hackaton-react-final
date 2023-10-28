@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { deleteSeries, getVideoSeries } from '../../store/videos/videosActions';
 import { checkAdmin } from '../../helpers/functions';
 
@@ -8,7 +8,7 @@ const Series = () => {
     const {oneVideo, loading} = useSelector((state)=>state.videos);
     const {slug} = useParams();
     const dispatch = useDispatch();
-    const navigate = useDispatch();
+    const navigate = useNavigate();
     useEffect(()=>{
         dispatch(getVideoSeries({slug}))
     }, [])

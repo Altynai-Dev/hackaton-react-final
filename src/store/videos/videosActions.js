@@ -4,9 +4,11 @@ import { getAccessToken } from "../../helpers/functions";
 
 export const getVideos = createAsyncThunk(
     'videos/getVideos',
-    async() => {
+    async(_, {getState}) => {
         try{
-            const {data} = await axios.get("http://34.89.235.149/api/v1/title/");
+            const {search} = getState().videos;
+            const categoryAndSearchParams = `search=${search}`;
+            const {data} = await axios.get(`http://34.89.235.149/api/v1/title/?${categoryAndSearchParams}`);
             return {data};
         }catch(err){
             console.log(err)
@@ -54,7 +56,6 @@ export const getVideoSeries = createAsyncThunk(
 export const createVideo = createAsyncThunk(
     'videos/createVideo',
     async (video, { dispatch }) => {
-        // console.log(video)
         const formData = new FormData()
         formData.append('number', video.number)
         formData.append('name', video.name)
@@ -65,10 +66,27 @@ export const createVideo = createAsyncThunk(
         {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": "multipart/form-data"}}
         )
         .catch(err => console.log(err));
-        dispatch(getVideoSeries());
+        dispatch(getVideos());
     }
 );
 
+export const editSeries = createAsyncThunk(
+    'videos/editSeries',
+    async(video, {dispatch}) => {
+        console.log(video)
+        const formData = new FormData();
+        formData.append('number', video.number)
+        formData.append('name', video.name)
+        formData.append('season', video.season)
+        formData.append('title', video.title)
+        formData.append('video', video.video)
+        const res = await axios.patch(`http://34.89.235.149/api/v1/title/series/${video.slug}`, formData,
+        {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": 'multipart/form-data'}})
+        .catch(err => console.log(err));
+        console.log(res.data)
+        dispatch(getVideos());
+    }
+);
 
 export const createMovie = createAsyncThunk(
     'videos/createMovie',
@@ -96,21 +114,26 @@ export const deleteMovie = createAsyncThunk(
     }
 );
 
-
-export const editSeries = createAsyncThunk(
-    'videos/editSeries',
-    async({series}, {dispatch}) => {
-        await axios.patch(`http://34.89.235.149/api/v1/title/series/${series.slug}`, series);
-        dispatch(getVideoSeries());
-    }
-)
-
 export const deleteSeries = createAsyncThunk(
     'videos/deleteSeries',
     async(slug, {dispatch})=>{
         await axios.delete(`http://34.89.235.149/api/v1/title/series/${slug}`,
         {headers: {"Authorization": `Bearer ${getAccessToken()}`}}
         ).catch(err => console.log(err));
-        dispatch(getVideoSeries());
+        dispatch(getVideos());
+    }
+);
+
+
+export const getGenres = createAsyncThunk(
+    'videos/getGenres',
+    async() => {
+    const {data} = await axios.get('http://34.89.235.149/api/v1/title/genre/');
+    const genres = data.results;
+    const genresList = [];
+    for(let i=0; i<genres.length; i++){
+        genresList.push(genres[i].slug)
+    }
+    return genresList;
     }
 )
