@@ -20,7 +20,7 @@ const Seasons = () => {
         <div key={key}>
           <h1>{key}</h1>
         {value.map((series, index) => (
-          <span onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number}</span>
+          <span key={index} onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number}</span>
         ))}
       </div>
       ))}

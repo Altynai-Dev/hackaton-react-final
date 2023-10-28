@@ -1,21 +1,39 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { getVideoSeries } from '../../store/videos/videosActions';
+import { deleteSeries, getVideoSeries } from '../../store/videos/videosActions';
+import { checkAdmin } from '../../helpers/functions';
 
 const Series = () => {
-    const {oneVideo} = useSelector((state)=>state.videos);
+    const {oneVideo, loading} = useSelector((state)=>state.videos);
     const {slug} = useParams();
     const dispatch = useDispatch();
-
+    const navigate = useDispatch();
     useEffect(()=>{
         dispatch(getVideoSeries({slug}))
     }, [])
+    
   return (
     <>
-    {oneVideo ? (
-        <video src={oneVideo.video} controls width={'100%'}/>
-    ):(<h3>No video!</h3>)}
+      {loading ? (<h3>Loading...</h3>
+      ) : (
+        <>
+          {oneVideo && (
+            <>
+            <video src={oneVideo.video} controls width={'100%'} />
+            {checkAdmin() && <button onClick={()=>{
+              dispatch(deleteSeries(slug))
+              navigate('/netflix')}}>Delete</button>}
+
+              {checkAdmin() && (
+              <div>
+              <button onClick={()=>{
+              navigate(`/series/edit-series/${oneVideo.slug}`)}}>Edit</button>
+              </div>)}
+            </>
+          )}
+        </>
+      )}
     </>
   )
 }
