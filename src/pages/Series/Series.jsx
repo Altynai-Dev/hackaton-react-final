@@ -6,13 +6,15 @@ import { checkAdmin } from '../../helpers/functions';
 
 const Series = () => {
     const {oneVideo, loading} = useSelector((state)=>state.videos);
+    //const [isLikedVideo, setIsLikedVideo] = useState(false);
+
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(()=>{
         dispatch(getVideoSeries({slug}))
     }, [])
-    
+    console.log(oneVideo)
   return (
     <>
       {loading ? (<h3>Loading...</h3>

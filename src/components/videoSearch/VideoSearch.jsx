@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {setSearchVal} from "../../store/videos/videosSlice";
 import { getVideos } from "../../store/videos/videosActions";
+import './VideoSearch.scss'
 
 const VideoSearch = () => {
   const { search } = useSelector(state => state.videos);
@@ -15,7 +16,7 @@ const VideoSearch = () => {
   }, [search]);
 
   return (
-    <div>
+    <div className="container">
       <input
         onChange={(e) => setSearchValue(e.target.value)}
         value={searchValue}

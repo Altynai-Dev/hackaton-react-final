@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    height: 1.5rem;
+    width: 100%;
+    gap: 10px;
+
+    input{
+
+        color: black;
+    }
+
+    button{
+        background-color: orange;
+        width: 25%;
+        padding: 5px;
+    }
+    
+}
+

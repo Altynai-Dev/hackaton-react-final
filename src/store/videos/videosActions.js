@@ -137,3 +137,13 @@ export const getGenres = createAsyncThunk(
     return genresList;
     }
 )
+
+export const likeVideo = createAsyncThunk(
+    'videos/likeVideo',
+    async ({slug}, { dispatch }) => {
+        // const user = getAuthUser();
+        await axios.post(`http://34.89.235.149/api/v1/title/series/${slug}/like/`, {});
+
+        dispatch(getVideos());
+    }
+);

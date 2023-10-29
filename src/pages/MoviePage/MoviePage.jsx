@@ -6,26 +6,30 @@ import { getVideos } from "../../store/videos/videosActions";
 import VideoItem from "../../components/videoItem/VideoItem";
 import { checkAdmin } from "../../helpers/functions";
 import './MoviePage.scss';
+import VideoSearch from "../../components/videoSearch/VideoSearch";
 
 const MoviePage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const {videos, loading} = useSelector((state)=>state.videos);
+  const { videos, loading } = useSelector((state) => state.videos);
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getVideos());
-  },[]);
+  }, []);
   return (
     <div className="videos">
-    <Navbar />
-         <div className="videoItems">
-              {videos.map((video) => (
-                  <VideoItem video={video} key={video.slug} />
-              ))}
-              {checkAdmin() && <button onClick={() => navigate("/createMovie")}>Add Movie</button>}
-          </div> 
+      <Navbar />
+      <div className="videoSearch">
+        <VideoSearch />
       </div>
+      <div className="videoItems">
+        {videos.map((video) => (
+          <VideoItem video={video} key={video.slug} />
+        ))}
+      </div>
+      {checkAdmin() && <button onClick={() => navigate("/createMovie")}>Add Movie</button>}
+    </div>
   )
 }
 

@@ -28,6 +28,8 @@ const CreateMovie = () => {
 
   return (
     <div className='createCard'>
+      <div className="container">
+        <div className="form">
       <h3>Create Movie</h3>
       <input
         type="text"
@@ -37,7 +39,7 @@ const CreateMovie = () => {
 
       <input
         type="number"
-        placeholder="Возрвстное ограничение"
+        placeholder="Возрастное ограничение"
         onChange={(e) =>
           setMovie({ ...movie, age_rating: parseInt(e.target.value) })
         }
@@ -71,6 +73,8 @@ const CreateMovie = () => {
       >
         Create
       </button>
+      </div>
+      </div>
     </div>
   );
 };
