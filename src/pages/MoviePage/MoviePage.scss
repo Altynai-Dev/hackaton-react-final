@@ -1,26 +1,20 @@
 .videos{
     background-color: black;
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-
-    .videoSearch{
-        position: absolute;
-        top: 5rem;
-        left: 30rem;
-    }
-
+    
     .videoItems{
+        padding-top: 7rem;
         display: flex;
         flex-wrap: wrap;
         margin-top: 10rem;
         justify-content: center;
+       
     }
-    button{
+    .addMovie{
         width: 10%;
         display: flex;
         align-items: center;

@@ -1,0 +1,28 @@
+.seasons{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://wallpapersmug.com/large/bd1f8f/goku-anime-art-glowing-eyes.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 80%;
+    background-color: rgb(146, 139, 139);
+}
+.title{
+    font-size: 2rem;
+    color: rgba(114, 5, 226, 0.8);
+
+}
+span{
+    color: rgba(114, 5, 226, 0.8);
+    font-weight: bold;
+    cursor: pointer;
+}
+span:hover{
+    color: orangered;
+}

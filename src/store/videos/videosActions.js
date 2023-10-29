@@ -1,15 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getAccessToken } from "../../helpers/functions";
+import { getAccessToken, getTotalPages } from "../../helpers/functions";
 
 export const getVideos = createAsyncThunk(
     'videos/getVideos',
     async(_, {getState}) => {
         try{
-            const {search} = getState().videos;
+            const {search, currentPage} = getState().videos;
             const categoryAndSearchParams = `search=${search}`;
-            const {data} = await axios.get(`http://34.89.235.149/api/v1/title/?${categoryAndSearchParams}`);
-            return {data};
+            const pagesLimitParams = `?page=${currentPage}&_limit=10`;
+            console.log(pagesLimitParams)
+            const totalPages = await getTotalPages(`http://34.89.235.149/api/v1/title/?${categoryAndSearchParams}`);
+            const {data} = await axios.get(`http://34.89.235.149/api/v1/title/${pagesLimitParams}&?${categoryAndSearchParams}`);
+            return {data, totalPages};
         }catch(err){
             console.log(err)
         }
@@ -96,6 +99,7 @@ export const createMovie = createAsyncThunk(
         formData.append('age_rating', movie.age_rating);
         formData.append('description', movie.description);
         formData.append('poster', movie.poster);
+        formData.append('genre', movie.genre);
         const res = await axios.post('http://34.89.235.149/api/v1/title/', movie, 
         {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": 'multipart/form-data'}})
         .catch(err => console.log(err));

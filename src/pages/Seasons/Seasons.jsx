@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getVideoSeasons } from '../../store/videos/videosActions';
+import styles from './Seasons.module.css';
 
 const Seasons = () => {
 
@@ -15,16 +16,16 @@ const Seasons = () => {
         dispatch(getVideoSeasons({slug}))
     }, [seasons])
   return (
-    <>
+    <div className={styles.seasons}>
       {Object.entries(seasons).map(([key, value])=>(
-        <div key={key}>
-          <h1>{key}</h1>
+        <div className={styles.container} key={key}>
+          <h1 className={styles.title}>{key}</h1>
         {value.map((series, index) => (
-          <span key={index} onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number}</span>
+          <span key={index} onClick={()=>navigate(`/series/watch/${series.slug}`)}>{series.number} </span>
         ))}
       </div>
       ))}
-    </>
+    </div>
   )
 }
 

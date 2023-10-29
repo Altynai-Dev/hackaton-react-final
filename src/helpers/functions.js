@@ -37,3 +37,9 @@ export const getAccessToken = () =>{
     let tokens = JSON.parse(localStorage.getItem('tokens'));
     return tokens.access;
 }
+
+export const getTotalPages = async (url) => {
+    const { data } = await axios.get(url);
+   const totalPages = Math.ceil(data.count / 10);
+    return totalPages;
+};

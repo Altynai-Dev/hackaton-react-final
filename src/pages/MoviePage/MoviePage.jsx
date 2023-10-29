@@ -7,6 +7,7 @@ import VideoItem from "../../components/videoItem/VideoItem";
 import { checkAdmin } from "../../helpers/functions";
 import './MoviePage.scss';
 import VideoSearch from "../../components/videoSearch/VideoSearch";
+import PaginationControlled from "../../components/MoviesPagination/MoviesPagination";
 
 const MoviePage = () => {
   const navigate = useNavigate();
@@ -20,15 +21,14 @@ const MoviePage = () => {
   return (
     <div className="videos">
       <Navbar />
-      <div className="videoSearch">
-        <VideoSearch />
-      </div>
+      {/* <VideoSearch /> */}
       <div className="videoItems">
         {videos.map((video) => (
           <VideoItem video={video} key={video.slug} />
         ))}
       </div>
-      {checkAdmin() && <button onClick={() => navigate("/createMovie")}>Add Movie</button>}
+      <PaginationControlled />
+      {checkAdmin() && <button className="addMovie" onClick={() => navigate("/createMovie")}>Add Movie</button>}
     </div>
   )
 }
