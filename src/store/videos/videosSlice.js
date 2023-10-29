@@ -44,7 +44,7 @@ const videosSlice = createSlice({
         .addCase(getVideos.fulfilled, (state, action)=>{
             state.loading = false;
             state.videos = action.payload.data.results;
-
+            state.totalPages = action.payload.totalPages;
         })
         .addCase(getVideos.rejected, (state) => {
             state.loading = false;
