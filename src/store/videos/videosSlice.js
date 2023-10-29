@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getVideoDetail, getVideoSeasons, getVideoSeries, getVideos } from "./videosActions";
+import { getGenres, getVideoDetail, getVideoSeasons, getVideoSeries, getVideos } from "./videosActions";
 
 const videosSlice = createSlice({
     name: 'videos',
@@ -9,12 +9,32 @@ const videosSlice = createSlice({
         videoDetail: [],
         seasons : [],
         oneVideo: null,
+        search: '',
+        currentPage: 1,
+        genres:[],
+        totalPages: 1,
+        currentGenre: '',
+        sortByRating:''
     },
     reducers: {
         clearOneVideoState: (state) =>{
             state.oneVideo = null;
         },
-
+        changePage: (state, action)=>{
+            state.currentPage = action.payload.page;
+        },
+        changeGenre: (state, action) =>{
+            if(action.payload.genre === "all"){
+                state.currentGenre = ''
+            }else{
+                state.currentGenre = action.payload.genre;
+            };
+            state.currentGenre = 1
+        },
+        setSearchVal: (state, action) => {
+            state.search = action.payload.search;
+            state.currentPage = 1;
+        }
     },
     extraReducers: (builder) =>{
         builder
@@ -59,9 +79,12 @@ const videosSlice = createSlice({
         .addCase(getVideoSeries.rejected, (state)=>{
             state.loading = false;
         })
+        .addCase(getGenres.fulfilled, (state, action)=>{
+            state.genres = action.payload;
+        })
 
     }
 });
 
-export const {clearOneVideoState} = videosSlice.actions;
+export const {clearOneVideoState, changePage, changeGenre, setSearchVal} = videosSlice.actions;
 export default videosSlice.reducer;

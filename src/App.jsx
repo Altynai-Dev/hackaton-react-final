@@ -13,7 +13,8 @@ import Series from "./pages/Series/Series";
 import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
 import AnimeGame from "./components/games/AnimeGame/Animegame";
-import Edit from "./pages/Edit/Edit";
+import EditVideo from "./pages/Edit/EditVideo";
+import MoviePage from "./pages/MoviePage/MoviePage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/player" element={<Player/>}/>
       <Route exact path="/" element={<Netflix />} />
+      <Route path="/movies" element={<MoviePage />} />
       <Route exact path="/games" element={<Games />} />
       <Route path="/series/:slug" element={<Details />} />
       <Route path="/series/:slug/series" element={<Seasons />} />
@@ -32,7 +34,7 @@ function App() {
       <Route path="/createVideo" element={<CreateVideo />} />
       <Route path="/createMovie" element={<CreateMovie />} />
       <Route path="/animegame" element={<AnimeGame />} />
-      <Route path="/series/edit-series/:slug" element={<Edit />} />
+      <Route path="/series/edit-series/:slug" element={<EditVideo />} />
     </Routes>
     </BrowserRouter>
     </Provider>
