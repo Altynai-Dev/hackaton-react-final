@@ -13,7 +13,7 @@ const CreateMovie = () => {
     age_rating: 0,
     description: "",
     poster:"",
-    genre: ""
+    genre: []
   });
   
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const CreateMovie = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
+    
     dispatch(createMovie(movie));
     navigate("/");
   }

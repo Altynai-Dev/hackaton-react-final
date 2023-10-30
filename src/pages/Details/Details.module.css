@@ -18,8 +18,8 @@
     width: 30%;
 }
 
-button{
-    width: 20%;
+.detailsBtn{
+    width: 10rem;
     background-color: rgb(228, 92, 92);
     border: none;
     color: white;

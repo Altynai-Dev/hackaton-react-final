@@ -1,25 +1,32 @@
-// import React from 'react';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import { useDispatch } from 'react-redux'; 
-// import { toggleProductLike } from '../../store/products/productsActions';
+import React from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch } from 'react-redux';
+import { likeVideo } from '../../store/videos/videosActions';
+import { getVideoSeries } from '../../store/videos/videosActions';
+import { addLikedSeriesLS } from '../../helpers/functions';
 
-// const VideoLike = ({ isLikedVideo, likes, videoSlug }) => {
+const VideoLike = ({ oneVideo, isLikedVideo }) => {
 
-//   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-//   return (
-//     <>
-//       {isLikedVideo ? (
-//         <div onClick={() => dispatch(toggleProductLike({ setIsLike: false, likes, productId }))}>
-//           <FavoriteIcon fontSize="large" color="error" />
-//         </div>
-//       ) : (
-//         <div onClick={() => dispatch(toggleProductLike({ setIsLike: true, likes, productId }))}>
-//           <FavoriteIcon fontSize="large" />
-//         </div>
-//       )}
-//     </>
-//   )
-// }
+    const handleLike = () => {
+        dispatch(likeVideo({ oneVideo }));
+        addLikedSeriesLS(oneVideo);
+    }
+    return (
+        <>
+            {isLikedVideo ? (
+                <div onClick={handleLike}>
+                    <FavoriteIcon fontSize="large" color='error' />
+                </div>
+            ) : (
+                <div onClick={handleLike}>
+                    <FavoriteIcon fontSize="large" />
+                </div>
+            )}
 
-// export default VideoLike;
+        </>
+    )
+}
+
+export default VideoLike;

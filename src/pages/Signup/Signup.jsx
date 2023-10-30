@@ -15,7 +15,6 @@ const Signup = () => {
     const {loading, status} = useSelector((state) => state.account);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     useEffect(()=>{
         dispatch(clearStatusState())
       }, []);
@@ -43,9 +42,8 @@ const Signup = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
                     alt=""
                   />
-                  <Link to={'/login'}>
-                  <button className="loginButton">Sign In</button>
-                  </Link>
+                  <button onClick={()=>{
+                    navigate('/login')}} className="loginButton">Sign In</button>
                 </div>
               </div>
               <div className="container">

@@ -10,6 +10,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+
   const { loading, status } = useSelector((state) => state.account);
 
   const navigate = useNavigate();
@@ -36,28 +37,25 @@ export default function Login() {
       </div>
       <div className="container">
         <form>
-          <h1>Sign In</h1>
+          <h1>Войти</h1>
           <input
             type="email"
-            placeholder="Email or phone number"
+            placeholder="Email"
             onChange={(e) => setUser({...user, email:e.target.value})}
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Пароль"
             onChange={(e) => setUser({...user, password:e.target.value})}
           />
           <button className="loginButton" onClick={handleLogin}>
-            Sign In
+            Войти
           </button>
-          <span>
-            New to Netflix? <b>Sign up now.</b>
-          </span>
-          <small>
-            This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <b>Learn more</b>.
-          </small>
-        </form>
+          <div>
+            У вас нет учетной записи? <button onClick={()=>navigate('/signup')}>Пройти регистрацию.</button>
+          </div>
+        </form>  
+        <button onClick={()=>navigate('/recovery-password')}>Забыли пароль?</button>
       </div>
     </div>
   );
