@@ -24,16 +24,21 @@ const videosSlice = createSlice({
             state.currentPage = action.payload.page;
         },
         changeGenre: (state, action) =>{
-            if(action.payload.genre === "all"){
+            if(action.payload.genre === "все"){
                 state.currentGenre = ''
             }else{
                 state.currentGenre = action.payload.genre;
             };
-            state.currentGenre = 1
+            state.currentPage = 1;
         },
         setSearchVal: (state, action) => {
             state.search = action.payload.search;
             state.currentPage = 1;
+        },
+        clearAllFilters: (state) => {
+            state.currentGenre = 1;
+            state.currentGenre = '';
+            state.search = '';
         }
     },
     extraReducers: (builder) =>{
@@ -86,5 +91,7 @@ const videosSlice = createSlice({
     }
 });
 
-export const {clearOneVideoState, changePage, changeGenre, setSearchVal} = videosSlice.actions;
+export const {clearOneVideoState, 
+    changePage, changeGenre, 
+    setSearchVal, clearAllFilters} = videosSlice.actions;
 export default videosSlice.reducer;

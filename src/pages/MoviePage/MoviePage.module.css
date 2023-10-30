@@ -1,0 +1,14 @@
+.moviePage{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    color: white;
+}
+.movieContent{
+    margin-top: 5rem;
+    display: flex;
+    margin-bottom: 2rem;
+}

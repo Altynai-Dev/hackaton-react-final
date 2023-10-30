@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editSeries, getGenres, getVideoSeries } from '../../store/videos/videosActions';
 import { useNavigate, useParams } from 'react-router-dom';
 import { clearOneVideoState } from '../../store/videos/videosSlice';
+import s from './EditVideo.module.css';
 
 const EditVideo = () => {
     const {oneVideo, loading, genres} = useSelector((state)=>state.videos);
@@ -31,14 +32,14 @@ const EditVideo = () => {
       ):(
         <>
         {video && (
-          <div className='createCard'>
+          <div className={s.createCard}>
           <h3>Edit Video</h3>
-          <input
+          {/* <input
             type="number"
             placeholder="Номер серии"
             onChange={(e) => setVideo({ ...video, number: parseInt(e.target.value) })}
             value={video.number}
-          />
+          /> */}
     
           <input
             type="text"

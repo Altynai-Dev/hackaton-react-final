@@ -1,0 +1,47 @@
+.createCard{
+    background-image: url('https://media.graphassets.com/uB3PQrEMQGSUhNvS9gDQ');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.createForm{
+    background-color: gray;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+}
+h3{
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+}
+input{
+    border-radius: 10px;
+    color: black;
+    padding-left: 5px;
+}
+
+.createBtn{
+    width: 20%;
+    background-color: rgb(228, 92, 92);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding: 0.5rem;
+}

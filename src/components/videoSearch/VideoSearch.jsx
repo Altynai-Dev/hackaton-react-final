@@ -16,15 +16,16 @@ const VideoSearch = () => {
   }, [search]);
 
   return (
-    <div className="container">
+    <div className="videoSearch">
       <input
         onChange={(e) => setSearchValue(e.target.value)}
         value={searchValue}
         type="text"
         id="Search"
+        className="search"
         placeholder="Search for..."
       />
-        <button onClick={() => {
+        <button className="searchBtn" onClick={() => {
           dispatch(setSearchVal({ search: searchValue }));
           dispatch(getVideos())}}>Search</button>
     </div>

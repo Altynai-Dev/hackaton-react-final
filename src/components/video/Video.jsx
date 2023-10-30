@@ -38,15 +38,15 @@ const Video = () => {
   const videoContainerStyle = {
     position: "relative",
     paddingTop: "56.25%", // 16:9 aspect ratio
-    width: "100%", // 100% ширины окна браузера
+    width: "100vw", // 100% ширины окна браузера
   };
 
   const videoStyle = {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
   };
 
   return (
@@ -57,8 +57,8 @@ const Video = () => {
         muted={true}
         loop={true}
         style={videoStyle}
-        width="100%"
-        height="100%"
+        width="100vw"
+        height="100vh"
         preload="auto" // Добавьте этот атрибут
       />
     </div>

@@ -7,6 +7,7 @@ import logo from "../../assets/logo.png";
 import './Navbar.scss';
 import { FaPowerOff, FaSearch } from "react-icons/fa";
 import {checkAdmin, checkUserLogin, logout} from "../../helpers/functions";
+import VideoSearch from "../videoSearch/VideoSearch";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -76,6 +77,9 @@ export default function Navbar() {
                 setInputHover(false);
               }}
             />
+          </div>
+          <div>
+            {/* <VideoSearch /> */}
           </div>
           {checkUserLogin() ? (
               <button onClick={()=>{

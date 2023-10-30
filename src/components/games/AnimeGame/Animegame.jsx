@@ -86,7 +86,7 @@ const AnimeGame = () => {
   };
 
   return (
-    <div>
+    <div style={{color: 'white'}}>
       <h1>Anime Game</h1>
       <h2>Score: {score}</h2>
       <img

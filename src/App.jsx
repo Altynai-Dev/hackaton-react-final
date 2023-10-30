@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import Qiuz from "./components/quiz/Quiz"
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
+import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
 
 function App() {
   const [songs] = useState([
@@ -90,6 +91,8 @@ function App() {
       <Route path="/animegame" element={<AnimeGame />} />
       <Route path="/quiz" element={<Qiuz />} />
       <Route path="/series/edit-series/:slug" element={<EditVideo />} />
+      <Route path="/recovery-password" element={<RecoveryPassword />} />
+
     </Routes>
     </BrowserRouter>
     </Provider>

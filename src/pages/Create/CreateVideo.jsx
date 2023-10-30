@@ -1,4 +1,4 @@
-import './CreateVideo.scss';
+import s from './CreateVideo.module.css';
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -28,8 +28,9 @@ const CreateVideo = () => {
   }
 
   return (
-    <div className='createCard'>
-      <h3>Create Video</h3>
+    <div className={s.createCard}>
+      <div className={s.createForm}>
+      <h3>Добавить серию</h3>
       <input
         type="number"
         placeholder="Номер серии"
@@ -72,7 +73,7 @@ const CreateVideo = () => {
             <option key={category} value={category}>{category}</option>
           ))}
         </select> */}
-      <button onClick={handleSubmit}
+      <button className={s.createBtn} onClick={handleSubmit}
         // onClick={() => {
         //   dispatch(createGame({ game }));
         //   navigate("/games");
@@ -80,6 +81,7 @@ const CreateVideo = () => {
       >
         Create
       </button>
+      </div>
     </div>
   );
 };

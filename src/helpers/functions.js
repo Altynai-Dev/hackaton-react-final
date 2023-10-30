@@ -43,3 +43,18 @@ export const getTotalPages = async (url) => {
    const totalPages = Math.ceil(data.count / 10);
     return totalPages;
 };
+
+export const getAuthUser = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user;
+};
+
+export const addLikedSeriesLS = (oneVideo) =>{
+    const data = JSON.parse(localStorage.getItem('likedSeries')) || []
+    if(!data.includes(oneVideo.slug)){
+        return [...data, oneVideo]
+    }
+    localStorage.setItem('likedSeries', JSON.stringify(data))
+
+}
+

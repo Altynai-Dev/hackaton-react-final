@@ -8,7 +8,6 @@ import styles from './Details.module.css';
 const Details = () => {
 
     const {videoDetail} = useSelector((state) => state.videos);
-
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,7 +18,7 @@ const Details = () => {
 
     const handleDelete = (slug) =>{
       dispatch(deleteMovie(slug));
-      navigate("/netflix");
+      navigate("/movies");
     }
   return (
     <div className={styles.details}>
@@ -37,10 +36,16 @@ const Details = () => {
                 ))}</p>)}
                 <p><span className={styles.styleText}>Год выпуска</span>: {videoDetail.years}</p>
                 </div>
+                {checkAdmin() && <button className={styles.detailsBtn} onClick={()=>navigate("/createVideo")}>Добавить серию</button>}
+             {checkAdmin() && <button className={styles.detailsBtn} onClick={()=>{
+              
+              dispatch(deleteMovie(videoDetail.slug));
+              navigate("/movies");
+             }}>Удалить фильм</button>}
             </div>
+             
         )}
-        {checkAdmin() && <button onClick={()=>navigate("/createVideo")}>Добавить серию</button>}
-        {checkAdmin() && <button onClick={handleDelete}>Удалить фильм</button>}
+       
     </div>
   )
 }

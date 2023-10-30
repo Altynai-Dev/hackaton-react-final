@@ -1,34 +1,20 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom/dist";
+import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { useDispatch, useSelector } from "react-redux";
-import { getVideos } from "../../store/videos/videosActions";
-import VideoItem from "../../components/videoItem/VideoItem";
-import { checkAdmin } from "../../helpers/functions";
-import './MoviePage.scss';
+import s from './MoviePage.module.css';
 import VideoSearch from "../../components/videoSearch/VideoSearch";
-import PaginationControlled from "../../components/MoviesPagination/MoviesPagination";
+import MovieList from "../../components/MoviesList/MovieList";
+import MoviesFilter from "../../components/MoviesFilter/MoviesFilter";
 
 const MoviePage = () => {
-  const navigate = useNavigate();
-
-  const { videos, loading } = useSelector((state) => state.videos);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getVideos());
-  }, []);
+  
   return (
-    <div className="videos">
+    <div className={s.moviePage}>
       <Navbar />
-      {/* <VideoSearch /> */}
-      <div className="videoItems">
-        {videos.map((video) => (
-          <VideoItem video={video} key={video.slug} />
-        ))}
+      <div className={s.movieContent}>
+      <MoviesFilter />
+      <VideoSearch />
       </div>
-      <PaginationControlled />
-      {checkAdmin() && <button className="addMovie" onClick={() => navigate("/createMovie")}>Add Movie</button>}
+      <MovieList />
     </div>
   )
 }
