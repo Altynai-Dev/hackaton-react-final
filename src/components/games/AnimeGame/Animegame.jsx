@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Anime.module.css";
+import s from "./Anime.module.css";
 
 const AnimeGame = () => {
-  const [score, setScore] = useState(5);
+  const [score, setScore] = useState(0);
   const [animeCharacter, setAnimeCharacter] = useState({});
 
   useEffect(() => {
@@ -86,33 +86,32 @@ const AnimeGame = () => {
   };
 
   return (
-    <div style={{color: 'white'}}>
-      <h1>Anime Game</h1>
-      <h2>Score: {score}</h2>
-      <img
-        src={animeCharacter.image}
-        alt="anime character"
-        className={styles.img}
-      />
-
-      <button onClick={() => handleButtonClick("Konan")}>Konan</button>
-      <button onClick={() => handleButtonClick("Lapras")}>Lapras</button>
-      <button onClick={() => handleButtonClick("Ivankov Emporio")}>
-        Ivankov Emporio
-      </button>
-      <button onClick={() => handleButtonClick("Lilinett")}>Lilinett</button>
-      <button onClick={() => handleButtonClick("Juuzou Suzuya")}>
-        Juuzou Suzuya
-      </button>
-      <button onClick={() => handleButtonClick("Rui")}>Rui</button>
-      <button onClick={() => handleButtonClick("Garou")}>Garou</button>
-      <button onClick={() => handleButtonClick("Zeke")}>Zeke</button>
-      <button onClick={() => handleButtonClick("Kuroo Tetsuro")}>
-        Kuroo Tetsuro
-      </button>
-      <button onClick={() => handleButtonClick("Ryousuke Kira")}>
-        Ryousuke Kira
-      </button>
+    <div className={s.anime} >
+        <h1>Anime Game</h1>
+        <h2>Score: {score}</h2>
+        <img
+          src={animeCharacter.image}
+          alt="anime character"
+          className={s.img}
+        />
+        <button onClick={() => handleButtonClick("Konan")}>Konan</button>
+        <button onClick={() => handleButtonClick("Lapras")}>Lapras</button>
+        <button onClick={() => handleButtonClick("Ivankov Emporio")}>
+          Ivankov Emporio
+        </button>
+        <button onClick={() => handleButtonClick("Lilinett")}>Lilinett</button>
+        <button onClick={() => handleButtonClick("Juuzou Suzuya")}>
+          Juuzou Suzuya
+        </button>
+        <button onClick={() => handleButtonClick("Rui")}>Rui</button>
+        <button onClick={() => handleButtonClick("Garou")}>Garou</button>
+        <button onClick={() => handleButtonClick("Zeke")}>Zeke</button>
+        <button onClick={() => handleButtonClick("Kuroo Tetsuro")}>
+          Kuroo Tetsuro
+        </button>
+        <button onClick={() => handleButtonClick("Ryousuke Kira")}>
+          Ryousuke Kira
+        </button>
     </div>
   );
 };
