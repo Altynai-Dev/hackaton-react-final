@@ -49,12 +49,29 @@ export const getAuthUser = () => {
     return user;
 };
 
-export const addLikedSeriesLS = (oneVideo) =>{
-    const data = JSON.parse(localStorage.getItem('likedSeries')) || []
-    if(!data.includes(oneVideo.slug)){
-        return [...data, oneVideo]
-    }
-    localStorage.setItem('likedSeries', JSON.stringify(data))
-
+// Функция для получения данных о лайках из localStorage
+export function getLikedVideos() {
+    const likedVideosJSON = localStorage.getItem('likedVideos');
+    return likedVideosJSON ? JSON.parse(likedVideosJSON) : [];
 }
 
+// Функция для сохранения данных о лайках в localStorage
+function setLikedVideos(likedVideos) {
+    localStorage.setItem('likedVideos', JSON.stringify(likedVideos));
+}
+
+// Функция для проверки, является ли видео лайкнутым
+export function isVideoLiked(slug) {
+    const likedVideos = getLikedVideos();
+    return likedVideos.includes(slug);
+}
+
+export function toggleLike(oneVideo){
+    let likedVideos = getLikedVideos();
+    if(!isVideoLiked(oneVideo.slug)){
+        likedVideos.push(oneVideo.slug)
+    }else{
+        likedVideos = likedVideos.filter(likedSlug => likedSlug.slug !== oneVideo.slug);
+        setLikedVideos(likedVideos)
+    }
+}
