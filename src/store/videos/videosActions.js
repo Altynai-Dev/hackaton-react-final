@@ -138,7 +138,7 @@ export const getGenres = createAsyncThunk(
     }
     return genresList;
     }
-) 
+)
 
 export const likeVideo = createAsyncThunk(
     'videos/likeVideo',

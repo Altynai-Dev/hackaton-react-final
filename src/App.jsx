@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.scss";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
@@ -19,7 +19,8 @@ import Qiuz from "./components/quiz/Quiz"
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
-
+import Favorites from "./pages/Favorites/Favorites";
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 function App() {
   const [songs] = useState([
     {
@@ -48,28 +49,59 @@ function App() {
     },
   ]);
 
+
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
+  
+  const commands = [
+    {
+      command: ["Go to *", "Open *"],
+      callback: (redirectPage)=>setRedirectUrl(redirectPage)
+    }
+  ];
+  const {transcript} = useSpeechRecognition({commands});
+  const [redirectUrl, setRedirectUrl] = useState("");
 
-  useEffect (() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > songs.length - 1) {
-        return 0;
-      } else {
-        return currentSongIndex + 1;
-      }
-    });
-  }, [currentSongIndex]);
+  const pages = ['home', 'movies', 'favorites'];
+  const urls ={
+    home: '/',
+    movies: '/movies',
+    favorites: '/favorites'
+  };
+
+  if(!SpeechRecognition.browserSupportsSpeechRecognition()){
+    return null;
+  }
+
+  let redirect = '';
+
+  if(redirectUrl){
+    if(pages.includes(redirectUrl)){
+      redirect = <Navigate to={urls[redirectUrl]} />
+    }else{
+      redirect = <p>Could not find page: {redirectUrl}</p>
+    }
+  }
+
+  // useEffect (() => {
+  //   setNextSongIndex(() => {
+  //     if (currentSongIndex + 1 > songs.length - 1) {
+  //       return 0;
+  //     } else {
+  //       return currentSongIndex + 1;
+  //     }
+  //   });
+  // }, [currentSongIndex]);
   
   return (
+    <>
     <Provider store={store}>
     <BrowserRouter>
     <Routes>
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="/signup" element={<Signup />} />
-      <Route exact path="/player" element={<Player/>}/>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/player" element={<Player/>}/>
         <Route
-            exact
             path="/song"
             element={
               <SongPlayer
@@ -82,7 +114,7 @@ function App() {
           />
       <Route exact path="/" element={<Netflix />} />
       <Route path="/movies" element={<MoviePage />} />
-      <Route exact path="/games" element={<Games />} />
+      <Route path="/games" element={<Games />} />
       <Route path="/series/:slug" element={<Details />} />
       <Route path="/series/:slug/series" element={<Seasons />} />
       <Route path="/series/watch/:slug" element={<Series />} />
@@ -92,10 +124,14 @@ function App() {
       <Route path="/quiz" element={<Qiuz />} />
       <Route path="/series/edit-series/:slug" element={<EditVideo />} />
       <Route path="/recovery-password" element={<RecoveryPassword />} />
-
+      <Route path="/favorites" element={<Favorites />} />
+      {redirect}
     </Routes>
     </BrowserRouter>
     </Provider>
+    <p id="transcript">Transcript: {transcript}</p>
+    <button onClick={SpeechRecognition.startListening}>Start</button>
+    </>
   );
 }
 
