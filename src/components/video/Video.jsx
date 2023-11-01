@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-
+import "./Video.module.css";
 import video1 from "./videos/video1.mp4";
 import video2 from "./videos/video2.mp4";
 import video3 from "./videos/video3.mp4";
 import video4 from "./videos/video4.mp4";
-
 const Video = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const totalSlides = 4;
@@ -38,29 +37,29 @@ const Video = () => {
   const videoContainerStyle = {
     position: "relative",
     paddingTop: "56.25%", // 16:9 aspect ratio
-    width: "100vw", // 100% ширины окна браузера
   };
 
   const videoStyle = {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
   };
 
   return (
-    <div className="video-container" style={videoContainerStyle}>
-      <ReactPlayer
-        url={getVideoUrl(currentSlide)}
-        playing={true}
-        muted={true}
-        loop={true}
-        style={videoStyle}
-        width="100vw"
-        height="100vh"
-        preload="auto" // Добавьте этот атрибут
-      />
+    <div className="video-container">
+      <div className="video-wrapper" style={videoContainerStyle}>
+        <ReactPlayer
+          url={getVideoUrl(currentSlide)}
+          playing={true}
+          muted={true}
+          loop={true}
+          style={videoStyle}
+          width="100%"
+          height="100%"
+        />
+      </div>
     </div>
   );
 };

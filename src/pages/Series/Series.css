@@ -1,0 +1,26 @@
+/* Updated styles to make the component full-width */
+.series-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+ 
+    width: 100%; /* Occupy full width of the viewport */
+}
+
+.video-player {
+    width: 100%; /* Occupy full width of the viewport */
+    background-color: #222; /* Background color for the video player */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for the video player */
+    padding: 20px;
+}
+
+video {
+    width: 100%;
+}
+
+.no-video-message {
+    text-align: center;
+    color: #fff; /* Text color for the message */
+    font-size: 24px; /* Font size for the message */
+}

@@ -19,9 +19,11 @@ import Qiuz from "./components/quiz/Quiz"
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
+import PayPages from "./pages/paypage/PayPages";
 import Favorites from "./pages/Favorites/Favorites";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 import Hiragana from "./components/games/Hiragana/Hiragana";
+
 function App() {
   const [songs] = useState([
     {

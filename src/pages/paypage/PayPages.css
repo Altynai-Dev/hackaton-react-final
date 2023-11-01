@@ -1,0 +1,145 @@
+/* PayPages.css */
+
+/* Overall container */
+.m-4 {
+  margin: 1rem;
+}
+
+/* Credit card container */
+.credit-card {
+  width: 100%;
+  max-width: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #8b4513;
+  position: relative;
+}
+
+/* Header and background image */
+.header {
+  position: relative;
+  background-image: url();
+  background-size: cover;
+}
+
+/* Credit card side (front and back) */
+.relative {
+  position: relative;
+  display: block;
+  display: none;
+}
+
+/* Credit card number */
+.number {
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+}
+
+/* Flex container for cardholder and expiration */
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* List of images */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+ul li {
+  margin: 0 5px;
+}
+
+ul li img {
+  max-width: 100%;
+}
+
+/* Main content */
+.main {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+/* Title */
+.text-xl {
+  font-size: 1.25rem;
+}
+
+/* Form input containers */
+.card-input {
+  margin-top: 0.75rem;
+}
+
+/* Text input styles */
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  outline: none;
+}
+
+/* Select input styles */
+.select-input {
+  width: 48%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  outline: none;
+}
+
+/* Security code input styles */
+.security-code {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  outline: none;
+}
+
+/* Submit button styles */
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none;
+}
+
+/* Button when valid */
+.bg-blue-300 {
+  background-color: #2196F3;
+}
+
+.text-blue-900 {
+  color: #2196F3;
+}
+
+/* Button when not valid */
+.bg-blue-50 {
+  background-color: #f3f4f6;
+}
+
+.text-gray-500 {
+  color: #718096;
+}
+
+/* Remove focus outline on button */
+.focus-ring {
+  outline: none;
+}
