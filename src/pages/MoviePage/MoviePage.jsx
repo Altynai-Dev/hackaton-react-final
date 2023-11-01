@@ -5,11 +5,14 @@ import VideoSearch from "../../components/videoSearch/VideoSearch";
 import MovieList from "../../components/MoviesList/MovieList";
 import MoviesFilter from "../../components/MoviesFilter/MoviesFilter";
 
+
 const MoviePage = () => {
   
   return (
     <div className={s.moviePage}>
       <Navbar />
+
+      
       <div className={s.movieContent}>
       <MoviesFilter />
       <VideoSearch />
