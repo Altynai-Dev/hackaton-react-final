@@ -64,7 +64,7 @@ export const createVideo = createAsyncThunk(
         formData.append('season', video.season)
         formData.append('title', video.title)
         formData.append('video', video.video)
-        const res = await axios.post('http://34.89.235.149/api/v1/title/series/', formData, 
+        await axios.post('http://34.89.235.149/api/v1/title/series/', formData, 
         {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": "multipart/form-data"}}
         )
         .catch(err => console.log(err));
@@ -98,7 +98,7 @@ export const createMovie = createAsyncThunk(
         formData.append('description', movie.description);
         formData.append('poster', movie.poster);
         formData.append('genre', movie.genre);
-        const res = await axios.post('http://34.89.235.149/api/v1/title/', movie, 
+        await axios.post('http://34.89.235.149/api/v1/title/', movie, 
         {headers: {"Authorization": `Bearer ${getAccessToken()}`, "Content-Type": 'multipart/form-data'}})
         .catch(err => console.log(err));
         dispatch(getVideos());
@@ -142,13 +142,12 @@ export const getGenres = createAsyncThunk(
 
 export const likeVideo = createAsyncThunk(
     'videos/likeVideo',
-    async ({oneVideo}, { dispatch }) => {
-        // const user = getAuthUser();
+    async (oneVideo, { dispatch }) => {
+        const slug = oneVideo.slug;
         const res = await axios.post(`http://34.89.235.149/api/v1/title/series/${oneVideo.slug}/like/`, oneVideo,
-        {headers: {"Authorization": `Bearer ${getAccessToken()}`}})
-        .catch(err => console.log(err));
-        console.log(res.data);
-        dispatch(getVideos());
+            { headers: { "Authorization": `Bearer ${getAccessToken()}` } })
+            .catch(err => console.log(err));
+        dispatch(getVideoSeries({slug}));
     }
 );
 
@@ -174,3 +173,4 @@ export const recoveryPassword = createAsyncThunk(
         alert(res.data)
     }
 )
+

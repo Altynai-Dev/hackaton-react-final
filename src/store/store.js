@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import accountReducer from './account/accountSlice';
 import videosReducer from './videos/videosSlice';
+import commentsReducer from './comments/commentsSlice';
+import favoritesReducer from './favorites/favoritesSlice';
 
 export default configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware({
@@ -8,6 +10,8 @@ export default configureStore({
     }),
     reducer: {
         account: accountReducer,
-        videos: videosReducer
+        videos: videosReducer,
+        comments: commentsReducer,
+        favorites: favoritesReducer
     }
 });
