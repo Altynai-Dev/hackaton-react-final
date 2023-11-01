@@ -97,42 +97,43 @@ function App() {
   
   return (
     <>
-    <Provider store={store}>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/player" element={<Player/>}/>
-        <Route
-            path="/song"
-            element={
-              <SongPlayer
-                currentSongIndex={currentSongIndex}
-                setCurrentSongIndex={setCurrentSongIndex}
-                nextSongIndex={nextSongIndex}
-                songs={songs}
-              />
-            }
-          />
-      <Route exact path="/" element={<Netflix />} />
-      <Route path="/movies" element={<MoviePage />} />
-      <Route path="/games" element={<Games />} />
-      <Route path="/series/:slug" element={<Details />} />
-      <Route path="/series/:slug/series" element={<Seasons />} />
-      <Route path="/series/watch/:slug" element={<Series />} />
-      <Route path="/createVideo" element={<CreateVideo />} />
-      <Route path="/createMovie" element={<CreateMovie />} />
-      <Route path="/animegame" element={<AnimeGame />} />
-      <Route path="/quiz" element={<Qiuz />} />
-      <Route path="/series/edit-series/:slug" element={<EditVideo />} />
-      <Route path="/recovery-password" element={<RecoveryPassword />} />
-      <Route path="/favorites" element={<Favorites />} />
-      {redirect}
-    </Routes>
-    </BrowserRouter>
-    </Provider>
-    <p id="transcript">Transcript: {transcript}</p>
-    <button onClick={SpeechRecognition.startListening}>Start</button>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/player" element={<Player />} />
+            <Route
+              path="/song"
+              element={
+                <SongPlayer
+                  currentSongIndex={currentSongIndex}
+                  setCurrentSongIndex={setCurrentSongIndex}
+                  nextSongIndex={nextSongIndex}
+                  songs={songs}
+                />
+              }
+            />
+            <Route exact path="/" element={<Netflix />} />
+            <Route path="/movies" element={<MoviePage />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/series/:slug" element={<Details />} />
+            <Route path="/series/:slug/series" element={<Seasons />} />
+            <Route path="/series/watch/:slug" element={<Series />} />
+            <Route path="/createVideo" element={<CreateVideo />} />
+            <Route path="/createMovie" element={<CreateMovie />} />
+            <Route path="/animegame" element={<AnimeGame />} />
+            <Route path="/paypages" element={<PayPages />} />
+            <Route path="/quiz" element={<Qiuz />} />
+            <Route path="/series/edit-series/:slug" element={<EditVideo />} />
+            <Route path="/recovery-password" element={<RecoveryPassword />} />
+            <Route path="/favorites" element={<Favorites />} />
+            {redirect}
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+      <p id="transcript">Transcript: {transcript}</p>
+      <button onClick={SpeechRecognition.startListening}>Start</button>
     </>
   );
 }
