@@ -75,3 +75,13 @@ export function toggleLike(oneVideo){
         setLikedVideos(likedVideos)
     }
 }
+
+export const getFavoriteData = () => {
+    try {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        return favorites;
+    } catch (error) {
+        console.error("Ошибка при разборе данных из localStorage:", error);
+        return [];
+    }
+};
