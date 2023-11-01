@@ -19,6 +19,7 @@ import Qiuz from "./components/quiz/Quiz"
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
+import PayPages from "./pages/paypage/PayPages";
 
 function App() {
   const [songs] = useState([
@@ -63,12 +64,12 @@ function App() {
   
   return (
     <Provider store={store}>
-    <BrowserRouter>
-    <Routes>
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="/signup" element={<Signup />} />
-      <Route exact path="/player" element={<Player/>}/>
-        <Route
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/player" element={<Player />} />
+          <Route
             exact
             path="/song"
             element={
@@ -80,21 +81,21 @@ function App() {
               />
             }
           />
-      <Route exact path="/" element={<Netflix />} />
-      <Route path="/movies" element={<MoviePage />} />
-      <Route exact path="/games" element={<Games />} />
-      <Route path="/series/:slug" element={<Details />} />
-      <Route path="/series/:slug/series" element={<Seasons />} />
-      <Route path="/series/watch/:slug" element={<Series />} />
-      <Route path="/createVideo" element={<CreateVideo />} />
-      <Route path="/createMovie" element={<CreateMovie />} />
-      <Route path="/animegame" element={<AnimeGame />} />
-      <Route path="/quiz" element={<Qiuz />} />
-      <Route path="/series/edit-series/:slug" element={<EditVideo />} />
-      <Route path="/recovery-password" element={<RecoveryPassword />} />
-
-    </Routes>
-    </BrowserRouter>
+          <Route exact path="/" element={<Netflix />} />
+          <Route path="/movies" element={<MoviePage />} />
+          <Route exact path="/games" element={<Games />} />
+          <Route path="/series/:slug" element={<Details />} />
+          <Route path="/series/:slug/series" element={<Seasons />} />
+          <Route path="/series/watch/:slug" element={<Series />} />
+          <Route path="/createVideo" element={<CreateVideo />} />
+          <Route path="/createMovie" element={<CreateMovie />} />
+          <Route path="/animegame" element={<AnimeGame />} />
+          <Route path="/quiz" element={<Qiuz />} />
+          <Route path="/series/edit-series/:slug" element={<EditVideo />} />
+          <Route path="/recovery-password" element={<RecoveryPassword />} />
+          <Route path="/paypages" element={<PayPages />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }
