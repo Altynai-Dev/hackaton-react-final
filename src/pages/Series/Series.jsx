@@ -25,8 +25,8 @@ const Series = () => {
       ) : (
         <div className={s.series}>
           {oneVideo && (
-            <div>
-            <video src={oneVideo.video} controls/>
+            <div className={s.seriesContainer}>
+            <video src={oneVideo.video} controls className={s.videoPlayer}  />
             <div style={{margin: '1rem'}}>
             <div><VideoLike oneVideo={oneVideo} /></div>
             <div>Количество лайков: {oneVideo.likes}</div>
