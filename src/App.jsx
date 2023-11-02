@@ -21,6 +21,7 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
 import Favorites from "./pages/Favorites/Favorites";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import Hiragana from "./components/games/Hiragana/Hiragana";
 function App() {
   const [songs] = useState([
     {
@@ -52,6 +53,15 @@ function App() {
 
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
+  useEffect (() => {
+    setNextSongIndex(() => {
+      if (currentSongIndex + 1 > songs.length - 1) {
+        return 0;
+      } else {
+        return currentSongIndex + 1;
+      }
+    });
+  }, [currentSongIndex]);
   
   const commands = [
     {
@@ -82,16 +92,6 @@ function App() {
       redirect = <p>Could not find page: {redirectUrl}</p>
     }
   }
-
-  // useEffect (() => {
-  //   setNextSongIndex(() => {
-  //     if (currentSongIndex + 1 > songs.length - 1) {
-  //       return 0;
-  //     } else {
-  //       return currentSongIndex + 1;
-  //     }
-  //   });
-  // }, [currentSongIndex]);
   
   return (
     <>
@@ -125,6 +125,7 @@ function App() {
       <Route path="/series/edit-series/:slug" element={<EditVideo />} />
       <Route path="/recovery-password" element={<RecoveryPassword />} />
       <Route path="/favorites" element={<Favorites />} />
+      <Route path="/hiragana" element={<Hiragana />} />
       {redirect}
     </Routes>
     </BrowserRouter>
