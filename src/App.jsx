@@ -21,10 +21,8 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
 import PayPages from "./pages/paypage/PayPages";
 import Favorites from "./pages/Favorites/Favorites";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
-
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import Hiragana from "./components/games/Hiragana/Hiragana";
 
 function App() {
   const [songs] = useState([
@@ -56,7 +54,7 @@ function App() {
 
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
-
+  
   const commands = [
     {
       command: ["Go to *", "Open *"],
@@ -86,57 +84,46 @@ function App() {
       redirect = <p>Could not find page: {redirectUrl}</p>;
     }
   }
-
-  // useEffect (() => {
-  //   setNextSongIndex(() => {
-  //     if (currentSongIndex + 1 > songs.length - 1) {
-  //       return 0;
-  //     } else {
-  //       return currentSongIndex + 1;
-  //     }
-  //   });
-  // }, [currentSongIndex]);
-
+  
   return (
     <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/player" element={<Player />} />
-            <Route
-              path="/song"
-              element={
-                <SongPlayer
-                  currentSongIndex={currentSongIndex}
-                  setCurrentSongIndex={setCurrentSongIndex}
-                  nextSongIndex={nextSongIndex}
-                  songs={songs}
-                />
-              }
-            />
-            <Route exact path="/" element={<Netflix />} />
-            <Route path="/movies" element={<MoviePage />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/series/:slug" element={<Details />} />
-            <Route path="/series/:slug/series" element={<Seasons />} />
-            <Route path="/series/watch/:slug" element={<Series />} />
-            <Route path="/createVideo" element={<CreateVideo />} />
-            <Route path="/createMovie" element={<CreateMovie />} />
-            <Route path="/animegame" element={<AnimeGame />} />
-            <Route path="/paypages" element={<PayPages />} />
-            <Route path="/quiz" element={<Qiuz />} />
-     
-            <Route path="/series/edit-series/:slug" element={<EditVideo />} />
-            <Route path="/recovery-password" element={<RecoveryPassword />} />
-            <Route path="/favorites" element={<Favorites />} />
-            {redirect}
-          </Routes>
-        </BrowserRouter>
-      </Provider>
-      <p id="transcript">Transcript: {transcript}</p>
-      <button onClick={SpeechRecognition.startListening}>Start</button>
+    <Provider store={store}>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/player" element={<Player/>}/>
+        <Route
+            path="/song"
+            element={
+              <SongPlayer
+                currentSongIndex={currentSongIndex}
+                setCurrentSongIndex={setCurrentSongIndex}
+                nextSongIndex={nextSongIndex}
+                songs={songs}
+              />
+            }
+          />
+      <Route exact path="/" element={<Netflix />} />
+      <Route path="/movies" element={<MoviePage />} />
+      <Route path="/games" element={<Games />} />
+      <Route path="/series/:slug" element={<Details />} />
+      <Route path="/series/:slug/series" element={<Seasons />} />
+      <Route path="/series/watch/:slug" element={<Series />} />
+      <Route path="/createVideo" element={<CreateVideo />} />
+      <Route path="/createMovie" element={<CreateMovie />} />
+      <Route path="/animegame" element={<AnimeGame />} />
+      <Route path="/quiz" element={<Qiuz />} />
+      <Route path="/series/edit-series/:slug" element={<EditVideo />} />
+      <Route path="/recovery-password" element={<RecoveryPassword />} />
+      <Route path="/favorites" element={<Favorites />} />
+      <Route path="/hiragana" element={<Hiragana />} />
+      {redirect}
+    </Routes>
+    </BrowserRouter>
+    </Provider>
+    <p id="transcript">Transcript: {transcript}</p>
+    <button onClick={SpeechRecognition.startListening}>Start</button>
     </>
   );
 }
