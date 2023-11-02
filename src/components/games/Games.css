@@ -20,12 +20,13 @@ h1{
   margin-bottom: 1em;
 }
 .container{
-  height: 700px;
-  width: 700px;
+  height: 85%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 1em;
+  margin-top: 3rem;
 }
 
 .card{

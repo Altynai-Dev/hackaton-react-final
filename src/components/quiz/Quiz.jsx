@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Quiz.css";
+import Navbar from "../navbar/Navbar";
 
 export default function App() {
   const questions = [
@@ -118,6 +119,7 @@ export default function App() {
   };
   return (
     <div className="app">
+      <Navbar/>
       {showScore ? (
         <div className="score-section">
           You scored {score} out of {questions.length}
