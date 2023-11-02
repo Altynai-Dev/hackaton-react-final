@@ -1,16 +1,40 @@
-
-.moviePage{
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    color: white;
+.moviePage {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  color: white;
 }
-.movieContent{
-    margin-top: 3rem;
-    display: flex;
-    margin-bottom: 1rem;
-   
+
+.movieContent {
+  margin-top: 3rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+/* Медиа-запрос для экранов шириной менее 768px (подстраивайте под свои нужды) */
+@media (max-width: 1440px) {
+  .movieContent {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    min-width: 98%;
+  }
+  .moviePage {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  color: white;
+}
+
+.movieContent {
+  margin-top: 3rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
 }
