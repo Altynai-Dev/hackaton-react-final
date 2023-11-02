@@ -15,7 +15,7 @@ import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
 import AnimeGame from "./components/games/AnimeGame/Animegame";
 import { useEffect, useState } from "react";
-import Qiuz from "./components/quiz/Quiz"
+import Qiuz from "./components/quiz/Quiz";
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
@@ -51,18 +51,8 @@ function App() {
     },
   ]);
 
-
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
-  useEffect (() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > songs.length - 1) {
-        return 0;
-      } else {
-        return currentSongIndex + 1;
-      }
-    });
-  }, [currentSongIndex]);
   
   return (
     <>

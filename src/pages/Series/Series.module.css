@@ -1,11 +1,15 @@
-.series{
+ .body{
+    background-color: black;
+ }
+ .series{
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: gray;
-    color: white;
+    background-color: rgb(13, 12, 12);
+    color: rgb(17, 17, 17);
+
 }
 
 .seriesBtn{
@@ -24,4 +28,102 @@
 .commentsBlock{
     background-color: azure;
     margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .seriesContainer {
+    flex-direction: column;
+    min-width: 90%;
+  }
+
+  .videoPlayer {
+    width: 90%;
+    padding: 10px;
+    margin-left: 1rem;
+  }
+
+  .videoInfo {
+    margin-top: 10px;
+  }
+  .commentsBlock {
+  background-color: azure;
+  margin: 10px 0;
+  width: 60%;
+  margin-left: 1rem;
+}
+.series{
+    width: 98%;
+}
+}
+@media (max-width:426px) {
+   .seriesContainer {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .videoPlayer {
+    width: 60%;
+    padding: 10px;
+    margin-left: 1rem;
+  }
+
+  .videoInfo {
+    margin-top: 10px;
+  }
+  .commentsBlock {
+  background-color: azure;
+  margin: 15px 0;
+  width: 50%;
+}
+.series{
+    width: 98%;
+} 
+}
+@media (max-width: 376px) {
+   .seriesContainer {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .videoPlayer {
+    width: 80%;
+    padding: 10px;
+    margin-left: 1.5rem;
+  }
+
+  .videoInfo {
+    margin-top: 10px;
+  }
+  .commentsBlock {
+  background-color: azure;
+  margin: 15px 0;
+  width: 40%;
+}
+.series{
+    width: 100%;
+} 
+}
+@media (max-width: 320px) {
+   .seriesContainer {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .videoPlayer {
+    width: 68%;
+    margin-left: 3.5rem;
+    align-items: center;
+  }
+
+  .videoInfo {
+    margin-top: 10px;
+  }
+  .commentsBlock {
+  background-color: azure;
+  margin: 15px 0;
+  width: 10%;
+}
+.series{
+    width: 100%;
+} 
 }

@@ -8,6 +8,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Navbar() {
   const [isBurgerShow, setIsBurgerShow] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [inputHover, setInputHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
 
   const navigate = useNavigate();
@@ -19,14 +22,18 @@ export default function Navbar() {
     { name: "Education", link: "/hiragana" },
   ];
 
+  const handleToggleMobileMenu = () => {
+    setIsMobile(!isMobile);
+  };
+
   return (
-    <div className="navbar">
+    <div className={`navbar ${isMobile ? "mobile" : ""}`}>
       <nav className="navbar__content">
         <div className="left">
           <div className="brand">
             <img src={logo} alt="Logo" />
           </div>
-          <div className="links">
+          <div className={`links ${isMobile ? "mobile" : ""}`}>
             <ul>
               {links.map(({ name, link }) => (
                 <li key={name}>
