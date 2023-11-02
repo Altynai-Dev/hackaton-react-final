@@ -13,14 +13,14 @@
 
 .app {
   background-color: #252d4a;
-  width: 450px;
-  min-height: 200px;
-  height: min-content;
+  width: 50vw;
+  height: 40vh;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: space-evenly;
+  margin: 10rem auto;
 }
 
 .score-section {

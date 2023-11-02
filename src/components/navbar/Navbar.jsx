@@ -20,7 +20,8 @@ export default function Navbar() {
     { name: "Movies", link: "/movies" },
     { name: "Favorites", link: "/favorites" },
     { name: "Education", link: "/hiragana" },
-    { name: "Game", link: '/games'}
+    { name: "Game", link: '/games'},
+    { name: "Quiz", link: '/quiz'}
   ];
 
   const handleToggleMobileMenu = () => {
