@@ -15,13 +15,16 @@ import CreateVideo from "./pages/Create/CreateVideo";
 import CreateMovie from "./pages/CreateMovie/CreateMovie";
 import AnimeGame from "./components/games/AnimeGame/Animegame";
 import { useEffect, useState } from "react";
-import Qiuz from "./components/quiz/Quiz"
+import Qiuz from "./components/quiz/Quiz";
 import EditVideo from "./pages/Edit/EditVideo";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
 import PayPages from "./pages/paypage/PayPages";
 import Favorites from "./pages/Favorites/Favorites";
-import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
 
 function App() {
   const [songs] = useState([
@@ -51,37 +54,36 @@ function App() {
     },
   ]);
 
-
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
-  
+
   const commands = [
     {
       command: ["Go to *", "Open *"],
-      callback: (redirectPage)=>setRedirectUrl(redirectPage)
-    }
+      callback: (redirectPage) => setRedirectUrl(redirectPage),
+    },
   ];
-  const {transcript} = useSpeechRecognition({commands});
+  const { transcript } = useSpeechRecognition({ commands });
   const [redirectUrl, setRedirectUrl] = useState("");
 
-  const pages = ['home', 'movies', 'favorites'];
-  const urls ={
-    home: '/',
-    movies: '/movies',
-    favorites: '/favorites'
+  const pages = ["home", "movies", "favorites"];
+  const urls = {
+    home: "/",
+    movies: "/movies",
+    favorites: "/favorites",
   };
 
-  if(!SpeechRecognition.browserSupportsSpeechRecognition()){
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
   }
 
-  let redirect = '';
+  let redirect = "";
 
-  if(redirectUrl){
-    if(pages.includes(redirectUrl)){
-      redirect = <Navigate to={urls[redirectUrl]} />
-    }else{
-      redirect = <p>Could not find page: {redirectUrl}</p>
+  if (redirectUrl) {
+    if (pages.includes(redirectUrl)) {
+      redirect = <Navigate to={urls[redirectUrl]} />;
+    } else {
+      redirect = <p>Could not find page: {redirectUrl}</p>;
     }
   }
 
@@ -94,7 +96,7 @@ function App() {
   //     }
   //   });
   // }, [currentSongIndex]);
-  
+
   return (
     <>
       <Provider store={store}>
@@ -125,6 +127,7 @@ function App() {
             <Route path="/animegame" element={<AnimeGame />} />
             <Route path="/paypages" element={<PayPages />} />
             <Route path="/quiz" element={<Qiuz />} />
+     
             <Route path="/series/edit-series/:slug" element={<EditVideo />} />
             <Route path="/recovery-password" element={<RecoveryPassword />} />
             <Route path="/favorites" element={<Favorites />} />

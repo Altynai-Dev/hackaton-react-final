@@ -12,6 +12,7 @@ import VideoSearch from "../videoSearch/VideoSearch";
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,14 +33,18 @@ export default function Navbar() {
     { name: "Favorites", link: "/favorites" },
   ];
 
+  const handleToggleMobileMenu = () => {
+    setIsMobile(!isMobile);
+  };
+
   return (
-    <div className="navbar">
+    <div className={`navbar ${isMobile ? "mobile" : ""}`}>
       <nav className="navbar__content">
         <div className="left">
           <div className="brand">
             <img src={logo} alt="Logo" />
           </div>
-          <div className="links">
+          <div className={`links ${isMobile ? "mobile" : ""}`}>
             <ul>
               {links.map(({ name, link }) => (
                 <li key={name}>
@@ -50,6 +55,14 @@ export default function Navbar() {
           </div>
         </div>
         <div className="right">
+          <button
+            className={`burger-menu ${isMobile ? "active" : ""}`}
+            onClick={handleToggleMobileMenu}
+          >
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </button>
           <div className={`search ${showSearch ? "show-search" : ""}`}>
             <button
               onFocus={() => setShowSearch(true)}
