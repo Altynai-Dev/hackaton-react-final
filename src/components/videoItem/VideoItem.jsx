@@ -4,6 +4,7 @@ import "./VideoItem.scss";
 import {checkUserLogin} from "../../helpers/functions";
 import StarIcon from '@mui/icons-material/Star';
 import { getFavoriteData } from '../../store/favorites/favoritesActions';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const VideoItem = ({video}) => {
   
   const [isFavoriteMovie, setFavoriteMovie] = useState(false);
@@ -93,6 +94,7 @@ const VideoItem = ({video}) => {
     <img onClick={()=>navigate(`/series/${video.slug}`)} src={video.poster} />
       <div className='titleContainer'>
         <h2>{video.name}</h2>
+        <ShoppingCartIcon onClick={()=>navigate('/payment')} />
         
         {isFavoriteMovie ? (
           <StarIcon style={{ color: "purple" }}
@@ -100,6 +102,7 @@ const VideoItem = ({video}) => {
         ) : (
           <StarIcon onClick={()=>handleFavorite(video)} />
         )}
+        
       </div>
     <p className='count'>Количество сезонов: {video.seasons}</p>
     {checkUserLogin()}

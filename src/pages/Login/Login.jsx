@@ -52,7 +52,7 @@ export default function Login() {
             Войти
           </button>
           <div>
-            У вас нет учетной записи? <button onClick={()=>navigate('/signup')}>Пройти регистрацию.</button>
+            У вас нет учетной записи? <button onClick={()=>navigate('/animegame')}>Пройти регистрацию.</button>
           </div>
         </form>  
         <button className='forgetBtn' onClick={()=>navigate('/recovery-password')}>Забыли пароль?</button>

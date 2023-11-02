@@ -106,7 +106,7 @@ const AnimeGame = () => {
     <div className={s.animeGame}>
       <div className={s.login}>
       <div style={{color:'white', fontSize:"1rem"}}>У Вас уже есть аккаунт?</div>
-      <button className={s.loginBtn}>Войти</button>
+      <button onClick={()=>navigate("/login")} className={s.loginBtn}>Войти</button>
       </div>
       <h1>Угадайте персонажа</h1>
       <h2>Round: {round}</h2>

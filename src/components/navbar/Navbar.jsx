@@ -20,6 +20,7 @@ export default function Navbar() {
     { name: "Movies", link: "/movies" },
     { name: "Favorites", link: "/favorites" },
     { name: "Education", link: "/hiragana" },
+    { name: "Game", link: '/games'}
   ];
 
   const handleToggleMobileMenu = () => {
@@ -34,13 +35,16 @@ export default function Navbar() {
             <img src={logo} alt="Logo" />
           </div>
           <div className={`links ${isMobile ? "mobile" : ""}`}>
-            <ul>
+            {checkUserLogin() && (
+              <ul>
               {links.map(({ name, link }) => (
                 <li key={name}>
                   <Link to={link}>{name}</Link>
                 </li>
               ))}
             </ul>
+            )}
+            
           </div>
         </div>
         <div className="right">
@@ -63,7 +67,7 @@ export default function Navbar() {
               <FaPowerOff />
             </button>
           ) : (
-            <button
+            <button className="loginBtn"
               onClick={() => {
                 navigate("/login");
               }}
