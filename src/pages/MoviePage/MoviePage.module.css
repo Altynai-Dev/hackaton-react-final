@@ -9,8 +9,26 @@
     color: white;
 }
 .movieContent{
-    margin-top: 3rem;
+    margin-top: 7rem;
     display: flex;
     margin-bottom: 1rem;
-   
+    flex-wrap: wrap;
+}
+
+@media (max-width: 470px) {
+    .moviePage{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 465px;
+    }
+
+    .movieContent{
+        margin-top: 7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

@@ -31,7 +31,7 @@ export default function Login() {
           <img
             className="logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
+            alt="logo"
           />
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function Login() {
             У вас нет учетной записи? <button onClick={()=>navigate('/signup')}>Пройти регистрацию.</button>
           </div>
         </form>  
-        <button onClick={()=>navigate('/recovery-password')}>Забыли пароль?</button>
+        <button className='forgetBtn' onClick={()=>navigate('/recovery-password')}>Забыли пароль?</button>
       </div>
     </div>
   );

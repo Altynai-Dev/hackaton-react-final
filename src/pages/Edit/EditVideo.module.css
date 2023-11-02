@@ -1,4 +1,25 @@
 .createCard{
+    background: url('https://img.freepik.com/free-photo/yasaka-pagoda-sannen-zaka-street-kyoto-japan_335224-10.jpg?w=740&t=st=1698903567~exp=1698904167~hmac=ef21dd5b392dce043d218421c14c71bece738b3fa5e9093efe528a98a0d144e5');
+    background-size: cover;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.form{
+    width: 50vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 200px;
+    font-size: 2rem;
+    gap: 7px;
+    background-color: white;
+}
+input{
+    padding: 10px;
 }

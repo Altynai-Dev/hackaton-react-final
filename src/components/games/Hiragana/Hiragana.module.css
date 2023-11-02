@@ -1,0 +1,14 @@
+.hiragana{
+    background-color: white;
+    width: 50vw;
+    height: 80vh;
+    color: red;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    
+}

@@ -33,6 +33,7 @@ const EditVideo = () => {
         <>
         {video && (
           <div className={s.createCard}>
+          <div className={s.form}>
           <h3>Edit Video</h3>
           {/* <input
             type="number"
@@ -82,11 +83,12 @@ const EditVideo = () => {
             </select>
           <button onClick={()=>{
             dispatch(editSeries(video));
-            navigate('/');
+            navigate('/movies');
           }}
           >
             Edit
           </button>
+          </div>
         </div>
         )}
         </>

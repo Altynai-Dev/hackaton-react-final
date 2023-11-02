@@ -1,166 +1,90 @@
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4.5rem;
-  width: 100%;
-  z-index: 999;
-  background-color: transparent;
-  transition: 0.3s ease-in-out;
-}
 
-.navbar__content {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
-  align-items: center;
-}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4.5rem;
+    width: 100vw;
+    z-index: 999;
+     background-color: black;
+    .scrolled {
+      background-color: black;
+    }
+    .navbar__content{
+        display: flex;   
+        justify-content: space-between;
+        padding: 0 4rem;
+        align-items: center;
+        transition: 0.3s ease-in-out;
 
-.left, .right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+    .left,
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      .brand {
+        img {
+          height: 4rem;
+        }
+      }
+      .links {
+        ul {
+          list-style-type: none;
+          display: flex;
+          gap: 2rem;
+          margin-top: 1.3rem;
+          li {
+            a {
+              color: white;
+              text-decoration: none;
+            }
+          }
+        }
 
-.brand img {
-  margin-top: 1rem;
-  height: 3rem;
-}
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+    .right {
+        gap: 1rem;
 
-.links ul {
-  list-style-type: none;
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
+        .burger-menu{
+          width: 15rem;
+          display: flex;
+          padding: 5px;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
 
-.links ul li a {
-  color: white;
-  text-decoration: none;
-}
+          p{
+            text-align: center;
+            cursor: pointer;
+          }
+        }
 
-.right {
-  gap: 1rem;
-}
+        .burger-menu,.burgerMenu{
+          display: none;
+          background-color: #f34242;
+          color: white;
 
-.right button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-}
+          @media (max-width: 768px) {
+            display: block;
+          }
+        }
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          &:focus {
+            outline: none;
+          }
+          svg {
+            color: #f34242;
+            font-size: 1.2rem;
+          }
+        }
+        
+      }
+    }
 
-.right button svg {
-  color: #f34242;
-  font-size: 1.2rem;
-}
-
-.search {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem;
-  padding-left: 0.5rem;
-}
-
-.search button {
-  background-color: transparent;
-  border: none;
-  &:focus {
-    outline: none;
-  }
-}
-
-.search button svg {
-  color: white;
-  font-size: 1.2rem;
-}
-
-.search input {
-  width: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease-in-out;
-  background-color: transparent;
-  border: none;
-  color: white;
-  &:focus {
-    outline: none;
-  }
-}
-
-.show-search {
-  border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.show-search input {
-  width: 100%;
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Адаптивные стили */
-@media (max-width: 426px) {
-  .navbar__content {
-    padding: 0.5rem;
-  }
-
-  .left .brand img {
-    height: 1.1rem;
-    width: 2rem;
-   margin-top: 0.5rem;
-  }
-
-  .links ul {
-    gap: 0.2rem;
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-  }
-
-  .right button svg {
-    font-size: 0.5rem;
-  }
-}
-
-@media (max-width: 374px) {
-  .navbar__content {
-    padding: 0.2rem;
-  }
-
-  .left .brand img {
-    height: 1.7rem;
-  }
-
-  .links ul {
-    gap: 0.4rem;
-  }
-
-  .right button svg {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 321px) {
-  .navbar__content {
-    padding: 0.1rem;
-  }
-
-  .left .brand img {
-    height: 1rem;
-    width: 1.4rem;
-  }
-
-  .links ul {
-    gap: 0.1rem;
-        font-size: 0.6rem;
-    margin-bottom: 9px;
-  }
-
-  .right button svg {
-    font-size: 0.6rem;
-  }
-}

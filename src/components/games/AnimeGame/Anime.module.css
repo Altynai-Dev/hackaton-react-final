@@ -1,5 +1,58 @@
-img{
-    width: 200px;
-    height: 200px;
+.animeGame{
+    background: url('https://img.freepik.com/free-vector/evening-cloudy-sky-purple-background-with-group-cumulus-cirrus-clouds-flat-cartoon-illustration_1284-62768.jpg?t=st=1698899146~exp=1698899746~hmac=cdd830728a3f6755ebc4df1da3d650b8865968c3bd4381876b661c577eb95476');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.brand{
+    width: 100px;
+    height: 100px;
+}
+.login{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.img{
+    width: 450px;
+    height: 400px;
     object-fit: cover;
+}
+.loginBtn {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.aimeBtns{
+    display: flex;
+    justify-content: space-between;
+    gap: 2px
+}
+.animeBtn{
+    background-color: rgb(105, 182, 74);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    width: 8rem;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin: 3px 0;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+.animeBtn:hover{
+    background-color: rgb(228, 132, 54);
+
 }
