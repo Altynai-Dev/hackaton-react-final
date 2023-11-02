@@ -1,26 +1,62 @@
-/* Updated styles to make the component full-width */
-.series-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
- 
-    width: 100%; /* Occupy full width of the viewport */
+*{background-color: black;
+
+}
+.seriesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.video-player {
-    width: 100%; /* Occupy full width of the viewport */
-    background-color: #222; /* Background color for the video player */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for the video player */
-    padding: 20px;
+.videoPlayer {
+  width: 100%;
+  background-color: #222;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
 }
 
-video {
-    width: 100%;
+.videoInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.no-video-message {
-    text-align: center;
-    color: #fff; /* Text color for the message */
-    font-size: 24px; /* Font size for the message */
+.seriesBtn {
+  width: 10rem;
+  background-color: rgb(228, 92, 92);
+  border: none;
+  color: rgb(14, 14, 14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.commentsBlock {
+  background-color: azure;
+  margin: 10px 0;
+}
+
+/* Медиа-запрос для меньших экранов (настройте max-width по необходимости) */
+@media (max-width: 768px) {
+  .seriesContainer {
+    flex-direction: column;
+    min-width: 90%;
+  }
+
+  .videoPlayer {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .videoInfo {
+    margin-top: 10px;
+  }
+  .commentsBlock {
+  background-color: azure;
+  margin: 10px 0;
+  width: 70%;
+}
 }
