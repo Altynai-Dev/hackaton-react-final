@@ -11,8 +11,6 @@ const MoviePage = () => {
   return (
     <div className={s.moviePage}>
       <Navbar />
-
-      
       <div className={s.movieContent}>
       <MoviesFilter />
       <VideoSearch />

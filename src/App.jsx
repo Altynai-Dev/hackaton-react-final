@@ -5,7 +5,7 @@ import Signup from "./pages/Signup/Signup";
 import Netflix from "./pages/Netflix/Netflix";
 import Games from "./components/games/Games";
 import Player from "./pages/PlayerPage/Player";
-import SongPlayer from "./components/SongPlayer/SongPlayer";
+//import SongPlayer from "./components/SongPlayer/SongPlayer";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Details from "./pages/Details/Details";
@@ -21,7 +21,6 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import RecoveryPassword from "./pages/RecoveryPassword/RecoveryPassword";
 import PayPages from "./pages/paypage/PayPages";
 import Favorites from "./pages/Favorites/Favorites";
-import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 import Hiragana from "./components/games/Hiragana/Hiragana";
 
 function App() {
@@ -65,36 +64,6 @@ function App() {
     });
   }, [currentSongIndex]);
   
-  const commands = [
-    {
-      command: ["Go to *", "Open *"],
-      callback: (redirectPage)=>setRedirectUrl(redirectPage)
-    }
-  ];
-  const {transcript} = useSpeechRecognition({commands});
-  const [redirectUrl, setRedirectUrl] = useState("");
-
-  const pages = ['home', 'movies', 'favorites'];
-  const urls ={
-    home: '/',
-    movies: '/movies',
-    favorites: '/favorites'
-  };
-
-  if(!SpeechRecognition.browserSupportsSpeechRecognition()){
-    return null;
-  }
-
-  let redirect = '';
-
-  if(redirectUrl){
-    if(pages.includes(redirectUrl)){
-      redirect = <Navigate to={urls[redirectUrl]} />
-    }else{
-      redirect = <p>Could not find page: {redirectUrl}</p>
-    }
-  }
-  
   return (
     <>
     <Provider store={store}>
@@ -103,17 +72,6 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/player" element={<Player/>}/>
-        <Route
-            path="/song"
-            element={
-              <SongPlayer
-                currentSongIndex={currentSongIndex}
-                setCurrentSongIndex={setCurrentSongIndex}
-                nextSongIndex={nextSongIndex}
-                songs={songs}
-              />
-            }
-          />
       <Route exact path="/" element={<Netflix />} />
       <Route path="/movies" element={<MoviePage />} />
       <Route path="/games" element={<Games />} />
@@ -128,12 +86,11 @@ function App() {
       <Route path="/recovery-password" element={<RecoveryPassword />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/hiragana" element={<Hiragana />} />
-      {redirect}
+      <Route path="/payment" element={<PayPages />} />
+
     </Routes>
     </BrowserRouter>
     </Provider>
-    <p id="transcript">Transcript: {transcript}</p>
-    <button onClick={SpeechRecognition.startListening}>Start</button>
     </>
   );
 }

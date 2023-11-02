@@ -5,6 +5,7 @@ import {checkUserLogin} from "../../helpers/functions";
 import StarIcon from '@mui/icons-material/Star';
 import { getFavoriteData } from '../../store/favorites/favoritesActions';
 const VideoItem = ({video}) => {
+  
   const [isFavoriteMovie, setFavoriteMovie] = useState(false);
   const navigate = useNavigate();
 
@@ -92,6 +93,7 @@ const VideoItem = ({video}) => {
     <img onClick={()=>navigate(`/series/${video.slug}`)} src={video.poster} />
       <div className='titleContainer'>
         <h2>{video.name}</h2>
+        
         {isFavoriteMovie ? (
           <StarIcon style={{ color: "purple" }}
           onClick={()=>handleFavorite(video)} />

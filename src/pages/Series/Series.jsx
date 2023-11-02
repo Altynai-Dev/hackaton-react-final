@@ -11,6 +11,7 @@ import CommentList from '../../components/comments/CommentsList';
 const Series = () => {
 
     const {oneVideo, loading} = useSelector((state)=>state.videos);
+    
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Series = () => {
             </div>
             {checkAdmin() && <button className={s.seriesBtn} onClick={()=>{
               dispatch(deleteSeries(slug))
-              navigate('/netflix')}}>Delete</button>}
+              navigate('/movies')}}>Delete</button>}
 
               {checkAdmin() && (
               <div>

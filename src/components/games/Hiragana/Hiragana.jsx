@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import s from './Hiragana.module.css';
+import Navbar from "../../navbar/Navbar";
 
 const Hiragana = () => {
   const hiragana = [
@@ -83,7 +85,7 @@ const Hiragana = () => {
     } else {
       const h = hiragana[current].hiragana;
       const r = hiragana[current].romanji;
-      setError(`Wrong! The correct answer for ${h} is ${r}`);
+      setError(`Неправильно! Правильный ответ для ${h} - ${r}`);
       setStreak(0);
       localStorage.setItem("streak", 0);
     }
@@ -99,9 +101,11 @@ const Hiragana = () => {
   }, []);
 
   return (
-    <div style={{backgroundColor:'white'}} className="min-h-screen bg-slate-800 text-white text-center">
+    <div className={s.hiragana}>
+      <Navbar />
       <header className="p-6 mb-8">
         <h1 className="text-2xl font-bold uppercase">Hiragana Quiz</h1>
+        <h3>Какой это слог?</h3>
         <div>
           <p>
             {streak} / {maxStreak}
@@ -110,7 +114,7 @@ const Hiragana = () => {
       </header>
 
       <div className="text-9xl font-bold mb-8">
-        <p>{hiragana[current].hiragana}</p>
+        <h2 style={{fontSize: '2.5rem'}}>{hiragana[current].hiragana}</h2>
       </div>
 
       <div className="mb-8">

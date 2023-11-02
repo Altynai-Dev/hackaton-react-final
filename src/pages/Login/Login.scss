@@ -91,5 +91,15 @@
           }
         }
       }
+      .forgetBtn{
+        height: 40px;
+          border-radius: 5px;
+          background-color: #e50914;
+          color: white;
+          border: none;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+      }
     }
   }

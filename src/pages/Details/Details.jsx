@@ -8,6 +8,7 @@ import styles from './Details.module.css';
 const Details = () => {
 
     const {videoDetail} = useSelector((state) => state.videos);
+    console.log(videoDetail)
     const {slug} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();

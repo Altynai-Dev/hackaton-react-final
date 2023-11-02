@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Anime.module.css";
+import s from "./Anime.module.css";
+import { useNavigate } from "react-router";
 
 const AnimeGame = () => {
-  const [score, setScore] = useState(5);
+  const [score, setScore] = useState(0);
   const [animeCharacter, setAnimeCharacter] = useState({});
+  const [round, setRound] = useState(1); // Счетчик раундов
+  const totalRounds = 10;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     generateRandomCharacter();
-  }, []);
+  }, [round]);
 
   const generateRandomCharacter = () => {
     const characters = [
@@ -74,45 +79,63 @@ const AnimeGame = () => {
       characters[Math.floor(Math.random() * characters.length)];
     setAnimeCharacter(randomCharacter);
   };
+  const handleNavigate = () =>{
 
-  const handleButtonClick = (character) => {
-    if (character === animeCharacter.name) {
-      setScore((prevScore) => prevScore + 1);
-      alert("Вы угадали!");
-    } else {
-      alert("Вы не угадали!");
+    if(score >= 8 && round == 10){
+      navigate('/signup')
+    }else if(score < 8 && round == 10){
+      alert('Сорри, вы не фанат аниме!');
+      setRound(1);
+      setScore(0);
     }
-    generateRandomCharacter();
+  }
+  const handleButtonClick = (character) => {
+    if (round <= totalRounds) {
+      if (character === animeCharacter.name) {
+        setScore((prevScore) => prevScore + 1);
+        alert("Вы угадали!");
+      } else {
+        alert("Вы не угадали!");
+      }
+      setRound((prevRound) => prevRound + 1)
+    }
+    handleNavigate();
   };
 
   return (
-    <div style={{color: 'white'}}>
-      <h1>Anime Game</h1>
+    <div className={s.animeGame}>
+      <div className={s.login}>
+      <div style={{color:'white', fontSize:"1rem"}}>У Вас уже есть аккаунт?</div>
+      <button className={s.loginBtn}>Войти</button>
+      </div>
+      <h1>Угадайте персонажа</h1>
+      <h2>Round: {round}</h2>
       <h2>Score: {score}</h2>
       <img
         src={animeCharacter.image}
         alt="anime character"
-        className={styles.img}
+        className={s.img}
       />
-
-      <button onClick={() => handleButtonClick("Konan")}>Konan</button>
-      <button onClick={() => handleButtonClick("Lapras")}>Lapras</button>
-      <button onClick={() => handleButtonClick("Ivankov Emporio")}>
+      <div className={s.aimeBtns}>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Konan")}>Konan</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Lapras")}>Lapras</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Ivankov Emporio")}>
         Ivankov Emporio
       </button>
-      <button onClick={() => handleButtonClick("Lilinett")}>Lilinett</button>
-      <button onClick={() => handleButtonClick("Juuzou Suzuya")}>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Lilinett")}>Lilinett</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Juuzou Suzuya")}>
         Juuzou Suzuya
       </button>
-      <button onClick={() => handleButtonClick("Rui")}>Rui</button>
-      <button onClick={() => handleButtonClick("Garou")}>Garou</button>
-      <button onClick={() => handleButtonClick("Zeke")}>Zeke</button>
-      <button onClick={() => handleButtonClick("Kuroo Tetsuro")}>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Rui")}>Rui</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Garou")}>Garou</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Zeke")}>Zeke</button>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Kuroo Tetsuro")}>
         Kuroo Tetsuro
       </button>
-      <button onClick={() => handleButtonClick("Ryousuke Kira")}>
+      <button className={s.animeBtn} onClick={() => handleButtonClick("Ryousuke Kira")}>
         Ryousuke Kira
       </button>
+      </div>
     </div>
   );
 };

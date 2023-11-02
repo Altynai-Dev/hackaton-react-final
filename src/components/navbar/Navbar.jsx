@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearchVal } from "../../store/videos/videosSlice";
-import { getVideos } from "../../store/videos/videosActions";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./Navbar.scss";
-import { FaPowerOff, FaSearch } from "react-icons/fa";
-import { checkAdmin, checkUserLogin, logout } from "../../helpers/functions";
-import VideoSearch from "../videoSearch/VideoSearch";
+import { FaPowerOff} from "react-icons/fa";
+import { checkUserLogin, logout } from "../../helpers/functions";
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Navbar() {
-  const [showSearch, setShowSearch] = useState(false);
-  const [inputHover, setInputHover] = useState(false);
+  const [isBurgerShow, setIsBurgerShow] = useState(false);
+
 
   const navigate = useNavigate();
-
-  // serach
-  const { search } = useSelector((state) => state.videos);
-  const [searchValue, setSearchValue] = useState("");
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!search) {
-      setSearchValue("");
-    }
-  }, [search]);
 
   const links = [
     { name: "Home", link: "/" },
     { name: "Movies", link: "/movies" },
     { name: "Favorites", link: "/favorites" },
+    { name: "Education", link: "/hiragana" },
   ];
 
   return (
@@ -50,41 +37,20 @@ export default function Navbar() {
           </div>
         </div>
         <div className="right">
-          <div className={`search ${showSearch ? "show-search" : ""}`}>
-            <button
-              onFocus={() => setShowSearch(true)}
-              onBlur={() => {
-                if (!inputHover) {
-                  setShowSearch(false);
-                }
-              }}
-            >
-              <FaSearch
-                onClick={() => {
-                  dispatch(setSearchVal({ search: searchValue }));
-                  dispatch(getVideos());
-                }}
-              />
-            </button>
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={(e) => setSearchValue(e.target.value)}
-              value={searchValue}
-              onMouseEnter={() => setInputHover(true)}
-              onMouseLeave={() => setInputHover(false)}
-              onBlur={() => {
-                setShowSearch(false);
-                setInputHover(false);
-              }}
-            />
+          {isBurgerShow && (
+            <div className="burger-menu" onClick={()=>setIsBurgerShow(false)}>
+            <p><Link style={{textDecoration:'none', color:'white'}} to={'/'}>Home</Link></p>
+            <p><Link style={{textDecoration:'none', color:'white'}} to={'/movies'}>Movies</Link></p>
+            <p><Link style={{textDecoration:'none', color:'white'}} to={'/favorites'}>Favorites</Link></p>
           </div>
-          <div>{/* <VideoSearch /> */}</div>
+          )}
+
+          <MenuIcon className="burgerMenu" color="white" onClick={()=>setIsBurgerShow(true)} />
           {checkUserLogin() ? (
             <button
               onClick={() => {
                 logout();
-                navigate("/signup");
+                navigate("/animegame");
               }}
             >
               <FaPowerOff />

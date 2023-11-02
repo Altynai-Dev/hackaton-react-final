@@ -24,7 +24,7 @@ const CreateVideo = () => {
   const handleSubmit = (e) =>{
     e.preventDefault();
     dispatch(createVideo(video));
-    navigate('/');
+    navigate('/movies');
   }
 
   return (

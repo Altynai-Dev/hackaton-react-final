@@ -17,13 +17,14 @@ export default function PaginationControlled() {
   return (
     <Stack
       className="pagination"
-      sx={{ margin: "20px", borderRadius: "20px" }}
+      sx={{ margin: "20px", borderRadius: "20px", backgroundColor: 'white' }}
       spacing={2}
     >
       <Pagination
         className="paginationBody"
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backgroundColor: "red",
+          color: 'white',
           padding: "5px",
           borderRadius: "20px",
         }}
