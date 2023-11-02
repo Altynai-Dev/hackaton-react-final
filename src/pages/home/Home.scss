@@ -1,15 +1,16 @@
-.body {
-  background-image: url("https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
 .netflix {
-  height: 100vh;
-   width: 100vw;
+  height: 98vh;
+  width: 100vw;
 }
 
 .videoContainer {
+  // background-image: url("https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+}
+
+.full-width-image {
   width: 100%;
+  height: auto;
+  z-index: 2;
 }

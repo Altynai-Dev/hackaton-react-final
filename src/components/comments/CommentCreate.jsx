@@ -28,9 +28,9 @@ const CommentCreate = ({slug}) => {
         onChange={(e)=>setComment(e.target.value)}
         type='text'
         placeholder='Напишите комментарий'
-        style={{width: "20rem", padding:"0.5rem", border:'none'}}
+        style={{width: "12rem", padding:"0.5rem", border:'none'}}
         />
-        <button style={{padding:"0.5rem", marginLeft:"5px", borderRadius:'5px', border:"none", backgroundColor:"#e50914", color:'white', cursor:'pointer'}} onClick={()=>addComment()}>Опубликовать</button>
+        <button style={{padding:"0.5rem", marginLeft:"7px", borderRadius:'5px', border:"none", backgroundColor:"#e50914", color:'white', cursor:'pointer'}} onClick={()=>addComment()}>Опубликовать</button>
     </div>
   )
 }

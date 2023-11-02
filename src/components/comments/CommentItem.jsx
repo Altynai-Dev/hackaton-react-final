@@ -8,7 +8,7 @@ const CommentItem = ({comment}) => {
   const dispatch = useDispatch();
 
   return (
-    <div style={{padding:'5px', color: "black", margin:"8px", backgroundColor:"white", width: '25rem', border: '1px solid orange', borderRadius:"3px"}}>
+    <div style={{padding:'5px', color: "black", margin:"8px", backgroundColor:"white", width: '20rem', border: '1px solid orange', borderRadius:"3px"}}>
         <div style={{fontSize:'0.8rem', color:"purple"}}>@{comment.author}</div>
         <p>{comment.content}</p>
         {currentUser === comment.author && (
